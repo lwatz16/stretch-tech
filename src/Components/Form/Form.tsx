@@ -21,6 +21,8 @@ class Form extends Component {
           name='ingredient1'
           onChange={(e)=> this.updateForm(e)}
         />
+        <button className='add-input-btn'>+</button>
+        <button className='search-btn'>Find Recipes</button>
       </form>
     )
   }
