@@ -1,12 +1,20 @@
-import React from 'react';
+import {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends Component {
+  state = {
+    recipes: [],
+    error: null
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hello</h1>
+      </div>
+    );
+  }
+  
 }
 
 export default App;
