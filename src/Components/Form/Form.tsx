@@ -1,10 +1,22 @@
 import {Component} from 'react';
 import './Form.css';
 
+interface Props {
+  searchSubmit: Function
+}
+
+interface State {
+  ingredient1: string
+}
+
 class Form extends Component {
-  state = {
-    ingredient1: ''
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      ingredient1: ''
+    }
   }
+  
 
   updateForm = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ [e.target.name]: e.target.value })
