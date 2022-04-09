@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import './App.css';
-import Header from './Components/Header/Header'
+import Header from './Components/Header/Header';
+import Form from './Components/Form/Form';
 
 class App extends Component {
   state = {
@@ -12,7 +13,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        
+        <main>
+          <Form />
+        </main>
       </div>
     );
   }
