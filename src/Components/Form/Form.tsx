@@ -13,11 +13,7 @@ class Form extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      ingredient1: '',
-      // ingredient2: '',
-      // ingredient3: '',
-      // ingredient4: '',
-      // ingredient5: ''
+      ingredient0: ''
     }
   }
 
@@ -31,24 +27,21 @@ class Form extends Component<Props, State> {
   }
 
   addField = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    // const target = e.target as HTMLButtonElement;
-    // target.parentElement.createElement()
-    // Test:
-    // e.preventDefault();
-    // console.log('Field added.')
+    e.preventDefault();
+    const numberOfFields = Object.keys(this.state);
+    if (numberOfFields.length < 5) {
+      let fieldNumber = `ingredient${numberOfFields.length}`;
+      this.setState({ ...this.state, [fieldNumber]: ''})
+    }
   }
 
   render() {
+    let inputs = Object.keys(this.state).map(key => <input type='text' placeholder='example: chicken' value={this.state[key]} name={key} key={key} onChange={(e) => this.updateForm(e)}/>);
+
     return(
       <form>
         <h2>What ingredients would you like to use?</h2>
-        <input
-          type='text'
-          placeholder='example: chicken'
-          value={this.state.ingredient1}
-          name='ingredient1'
-          onChange={(e)=> this.updateForm(e)}
-        />
+        {inputs}
         <button className='add-input-btn' onClick={(e) => this.addField(e)}>+</button>
         <button className='search-btn' onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
       </form>
