@@ -10,8 +10,8 @@ class App extends Component {
     error: null
   }
 
-  searchForRecipes = (ingredient: string) => {
-    apiCalls.searchRecipes(ingredient).then(data => this.setState({ recipes: data.hits }))
+  searchForRecipes = (ingredients: string[]) => {
+    apiCalls.searchRecipes(ingredients).then(data => this.setState({ recipes: data.hits }))
   }
 
   render() {

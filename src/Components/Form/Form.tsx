@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Form.css';
 
 interface Props {
-  searchForRecipes: (ingredient: string) => void;
+  searchForRecipes: (ingredient: string[]) => void;
 }
 
 interface State {
@@ -23,7 +23,7 @@ class Form extends Component<Props, State> {
 
   getRecipes = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    this.props.searchForRecipes(this.state.ingredient1);
+    this.props.searchForRecipes(Object.values(this.state));
   }
 
   addField = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
