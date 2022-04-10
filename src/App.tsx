@@ -10,7 +10,7 @@ class App extends Component {
     error: null
   }
 
-  searchSubmit = (ingredient: string) => {
+  searchForRecipes = (ingredient: string) => {
     apiCalls.searchRecipes(ingredient).then(data => this.setState({ recipes: data.hits }))
   }
 
@@ -19,7 +19,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <Form searchSubmit={this.searchSubmit} />
+          <Form searchForRecipes={this.searchForRecipes} />
         </main>
       </div>
     );
