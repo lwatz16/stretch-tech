@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import {Component} from 'react';
 import './App.css';
+import Header from './Components/Header/Header';
+import Form from './Components/Form/Form';
+import apiCalls from './apiCalls';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    recipes: [],
+    error: null
+  }
+
+  searchForRecipes = (ingredients: string[]) => {
+    apiCalls.searchRecipes(ingredients).then(data => this.setState({ recipes: data.hits }))
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <main>
+          <Form searchForRecipes={this.searchForRecipes} />
+        </main>
+      </div>
+    );
+  }
+  
 }
 
 export default App;
