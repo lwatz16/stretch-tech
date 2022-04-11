@@ -9,7 +9,7 @@ interface RecipeInterface {
   uri: string,
   label: string,
   images: {
-    LARGE: {
+    REGULAR: {
       url: string
     }
   },
