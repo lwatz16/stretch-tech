@@ -9,6 +9,8 @@ const RecipeCard = (props: RecipeCardProps) => {
     <article>
       <img src={props.images.REGULAR.url} />
       <h3>{props.label}</h3>
+      <p>{props.calories.toFixed(0)} cal</p>
+      <button>See Details</button>
     </article>
   )
 }

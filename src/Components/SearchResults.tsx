@@ -7,7 +7,6 @@ interface SearchResults {
 
 const SearchResults = ({recipes}: SearchResults) => {
   const recipeCards = recipes.map((recipe, index) => {
-    console.log(recipe)
     return (<RecipeCard 
               key={index.toString()}
               uri={recipe.uri}
