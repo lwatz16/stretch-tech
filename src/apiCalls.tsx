@@ -1,4 +1,5 @@
-// add the appId & appKey
+const appId = process.env.REACT_APP_EDAMAN_API_ID
+const appKey = process.env.REACT_APP_EDAMAN_API_KEY
 
 const apiCalls = {
   searchRecipes(ingredient: string[]) {
