@@ -6,7 +6,7 @@ interface RecipeCardProps extends RecipeInterface {
 
 const RecipeCard = (props: RecipeCardProps) => {
   return (
-    <article>{props.uri}</article>
+    <article></article>
   )
 }
 

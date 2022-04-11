@@ -6,10 +6,10 @@ interface SearchResults {
 }
 
 const SearchResults = ({recipes}: SearchResults) => {
-  const recipeCards = recipes.map(recipe => {
+  const recipeCards = recipes.map((recipe, index) => {
     console.log(recipe)
     return (<RecipeCard 
-              key={recipe.uri}
+              key={index.toString()}
               uri={recipe.uri}
               label={recipe.label}
               images={recipe.images}

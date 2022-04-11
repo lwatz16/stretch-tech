@@ -27,6 +27,10 @@ interface StateInterface {
   error: boolean
 } 
 
+interface IndividualRecipe {
+  recipe: RecipeInterface
+}
+
 class App extends Component {
   state: StateInterface = {
     recipes: [],
@@ -34,7 +38,11 @@ class App extends Component {
   }
 
   searchForRecipes = (ingredients: string[]) => {
-    apiCalls.searchRecipes(ingredients).then(data => this.setState({ recipes: data.hits }))
+    
+    apiCalls.searchRecipes(ingredients).then(data => {
+      let allRecipes = data.hits.map((recipe: IndividualRecipe) => recipe.recipe)
+      this.setState({ recipes: allRecipes })
+    })
   }
 
   render() {
