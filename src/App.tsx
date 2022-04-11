@@ -5,10 +5,32 @@ import SearchResults from './Components/SearchResults';
 import apiCalls from './apiCalls';
 import './Css/styles.css';
 
+interface RecipeInterface {
+  uri: string,
+  label: string,
+  images: {
+    LARGE: {
+      url: string
+    }
+  },
+  url: string,
+  yield: number,
+  dietLabels: string[],
+  healthLabels: string[],
+  calories: number,
+  mealType: string[],
+  cuisineType: string[],
+}
+
+interface StateInterface {
+  recipes: RecipeInterface[],
+  error: boolean
+} 
+
 class App extends Component {
-  state = {
+  state: StateInterface = {
     recipes: [],
-    error: null
+    error: false
   }
 
   searchForRecipes = (ingredients: string[]) => {
@@ -21,7 +43,7 @@ class App extends Component {
         <Header />
         <main>
           <Form searchForRecipes={this.searchForRecipes} />
-          
+          <SearchResults recipes={this.state.recipes} />
         </main>
       </div>
     );
@@ -30,3 +52,4 @@ class App extends Component {
 }
 
 export default App;
+export type {RecipeInterface};

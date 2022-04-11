@@ -1,7 +1,9 @@
+import type {RecipeInterface} from '../App';
 
-
-const SearchResults = () => {
-
+const SearchResults = (recipes: []) => {
+  return (
+    <section></section>
+  )
 }
 
 export default SearchResults;
