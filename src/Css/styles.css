@@ -5,6 +5,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  cursor: pointer;
+  background-color: #EB7F02;
+  color: #fff;
+  border: 0;
+  border-radius: 15px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .background-image {
   object-fit: cover;
   width: 100%;
@@ -63,6 +74,15 @@ main {
   margin: 0 0.2em;
 }
 
+.add-input-btn {
+  width: 40px;
+  height: 40px;
+}
+
+.search-btn {
+  padding: 0 1em;
+}
+
 .search-results {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -100,8 +120,7 @@ main {
   width: 100px;
   right: 0.4em;
   bottom: 0.4em;
-  border-radius: 15px;
   border: 0;
-  font-weight: bold;
-  font-size: 16px;
+  background-color: #EB7F02;
+  color: #fff;
 }
