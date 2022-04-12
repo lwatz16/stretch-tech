@@ -70,17 +70,23 @@ main {
 }
 
 .recipe-card {
-  width: 80%;
   position: relative;
-  border: 1px solid pink;
   margin: auto;
 }
 .recipe-card .recipe-writing {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   display: flex;
   width: 100%;
-  border: 1px solid red;
   justify-content: space-between;
+  align-items: flex-end;
+}
+.recipe-card button {
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  right: 0.2em;
+  bottom: 0.2em;
 }
