@@ -63,3 +63,23 @@ main {
 .ingredient-form .form-buttons button {
   margin: 0 0.2em;
 }
+
+.search-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.recipe-card {
+  width: 80%;
+  position: relative;
+  border: 1px solid pink;
+}
+.recipe-card .recipe-writing {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  border: 1px solid red;
+  justify-content: space-between;
+}
