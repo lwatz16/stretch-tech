@@ -38,7 +38,7 @@ class Form extends Component<Props, State> {
     let inputs = Object.keys(this.state).map(key => <input type='text' placeholder='example: chicken' value={this.state[key]} name={key} key={key} onChange={(e) => this.updateForm(e)}/>);
 
     return(
-      <form>
+      <form className="ingredient-form">
         <h2>What ingredients would you like to use?</h2>
         {inputs}
         <button className='add-input-btn' onClick={(e) => this.addField(e)}>+</button>
