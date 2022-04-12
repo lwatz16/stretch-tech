@@ -23,6 +23,11 @@ class Form extends Component<Props, State> {
   getRecipes = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     this.props.searchForRecipes(Object.values(this.state));
+    this.clearFields();
+  }
+
+  clearFields = () => {
+    this.setState({ ingredient0: '' });
   }
 
   addField = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
