@@ -12,7 +12,7 @@ const RecipeCard = (props: RecipeCardProps) => {
           <h3>{props.label}</h3>
           <p>{props.calories.toFixed(0)} cal</p>
         </div>
-        <button>See Details</button>
+        <button>View</button>
       </div>
       <img src={props.images.REGULAR.url} />
     </article>

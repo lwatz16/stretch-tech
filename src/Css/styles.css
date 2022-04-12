@@ -32,7 +32,6 @@ header h1 {
 
 main {
   box-sizing: border-box;
-  border: 1px solid black;
   width: 100%;
 }
 
@@ -66,27 +65,43 @@ main {
 
 .search-results {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 2em;
 }
 
 .recipe-card {
   position: relative;
   margin: auto;
+  height: 300px;
+  margin-bottom: 2em;
+  border-radius: 15px;
+}
+.recipe-card img {
+  border-radius: 15px;
 }
 .recipe-card .recipe-writing {
   position: absolute;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   z-index: 1;
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
+  bottom: 0;
+  border-radius: 0 0 15px 15px;
+  box-sizing: border-box;
+  padding: 0 0.4em;
+  padding-top: 3em;
 }
 .recipe-card button {
   position: absolute;
   height: 40px;
   width: 100px;
-  right: 0.2em;
-  bottom: 0.2em;
+  right: 0.4em;
+  bottom: 0.4em;
+  border-radius: 15px;
+  border: 0;
+  font-weight: bold;
+  font-size: 16px;
 }
