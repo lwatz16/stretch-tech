@@ -73,6 +73,7 @@ main {
   width: 80%;
   position: relative;
   border: 1px solid pink;
+  margin: auto;
 }
 .recipe-card .recipe-writing {
   position: absolute;
