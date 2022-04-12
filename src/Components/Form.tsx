@@ -36,14 +36,13 @@ class Form extends Component<Props, State> {
 
   render() {
     let inputs = Object.keys(this.state).map(key => <input type='text' placeholder='example: chicken' value={this.state[key]} name={key} key={key} onChange={(e) => this.updateForm(e)}/>);
-
     return(
       <form className="ingredient-form">
         <h2>What ingredients would you like to use?</h2>
         <div className="inputs-wrapper">
           {inputs}
           <div className="form-buttons">
-            <button className='add-input-btn' onClick={(e) => this.addField(e)}>+</button>
+            <button type='button' aria-label='Add New Search Field' className='add-input-btn' onClick={(e) => this.addField(e)}>+</button>
             <button className='search-btn' onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
           </div>
         </div>

@@ -12,6 +12,11 @@
         max-width: 500px;
         font-size: 1em;
         margin: 0.2em 0;
+        height: 32px;
+        border-radius: 10px;
+        border: 1.5px solid #888;
+        box-sizing: border-box;
+        padding: 0 0.4em;
     }
     .inputs-wrapper {
         display: flex;
@@ -20,8 +25,11 @@
     }
     .form-buttons {
         margin: 1em 0 0 0;
+        display: flex;
+        align-items: center;
+        
         button {
-        margin: 0 0.2em;
+            margin: 0 0.2em;
         }
     }
 }
@@ -29,6 +37,7 @@
 .add-input-btn {
     width: 40px;
     height: 40px;
+    font-size: 20px;
 }
 
 .search-btn {

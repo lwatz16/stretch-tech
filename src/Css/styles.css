@@ -61,6 +61,11 @@ main {
   max-width: 500px;
   font-size: 1em;
   margin: 0.2em 0;
+  height: 32px;
+  border-radius: 10px;
+  border: 1.5px solid #888;
+  box-sizing: border-box;
+  padding: 0 0.4em;
 }
 .ingredient-form .inputs-wrapper {
   display: flex;
@@ -69,6 +74,8 @@ main {
 }
 .ingredient-form .form-buttons {
   margin: 1em 0 0 0;
+  display: flex;
+  align-items: center;
 }
 .ingredient-form .form-buttons button {
   margin: 0 0.2em;
@@ -77,6 +84,7 @@ main {
 .add-input-btn {
   width: 40px;
   height: 40px;
+  font-size: 20px;
 }
 
 .search-btn {
@@ -95,6 +103,7 @@ main {
   height: 300px;
   margin-bottom: 2em;
   border-radius: 15px;
+  box-shadow: 7px 7px 20px 2px rgba(0, 0, 0, 0.3);
 }
 .recipe-card img {
   border-radius: 15px;
