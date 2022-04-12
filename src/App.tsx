@@ -48,6 +48,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <img className="background-image" src="https://images.unsplash.com/photo-1543352634-99a5d50ae78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Overhead view of an aesthetically pleasing table-spread.  Mmmm smell the spices wafting off of the perfectly prepaired sweet potatos."/>
         <Header />
         <main>
           <Form searchForRecipes={this.searchForRecipes} />
