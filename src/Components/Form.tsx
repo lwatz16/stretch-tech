@@ -40,9 +40,13 @@ class Form extends Component<Props, State> {
     return(
       <form className="ingredient-form">
         <h2>What ingredients would you like to use?</h2>
-        {inputs}
-        <button className='add-input-btn' onClick={(e) => this.addField(e)}>+</button>
-        <button className='search-btn' onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
+        <div className="inputs-wrapper">
+          {inputs}
+          <div className="form-buttons">
+            <button className='add-input-btn' onClick={(e) => this.addField(e)}>+</button>
+            <button className='search-btn' onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
+          </div>
+        </div>
       </form>
     )
   }

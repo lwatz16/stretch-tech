@@ -25,12 +25,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em;
 }
 
 header h1 {
-  margin: 0;
+  margin: 0 0 1em;
   padding-top: 1em;
+}
+
+main {
+  box-sizing: border-box;
+  border: 1px solid black;
+  width: 100%;
 }
 
 

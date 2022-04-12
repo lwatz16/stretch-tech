@@ -2,7 +2,27 @@
     background-color: rgb(255, 255, 255, 1);
     padding: 1em;
     border-radius: 30px;
+    max-width: 600px;
+    margin: auto;
     h2 {
         margin: 0 0 1em 0;
+        text-align: center;
+    }
+    input {
+        max-width: 500px;
+        font-size: 1em;
+        margin: 0.2em 0;
+    }
+    .inputs-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-buttons {
+        margin: 1em 0 0 0;
+        button {
+            margin: 0 0.2em;
+        }
     }
 }
+

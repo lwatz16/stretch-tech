@@ -22,7 +22,7 @@ const SearchResults = ({recipes}: SearchResults) => {
             />)
   });
   return (
-    <section>{recipeCards}</section>
+    <section className="search-results">{recipeCards}</section>
   )
 }
 

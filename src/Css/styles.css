@@ -23,19 +23,43 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em;
 }
 
 header h1 {
-  margin: 0;
+  margin: 0 0 1em;
   padding-top: 1em;
+}
+
+main {
+  box-sizing: border-box;
+  border: 1px solid black;
+  width: 100%;
 }
 
 .ingredient-form {
   background-color: rgb(255, 255, 255);
   padding: 1em;
   border-radius: 30px;
+  max-width: 600px;
+  margin: auto;
 }
 .ingredient-form h2 {
   margin: 0 0 1em 0;
+  text-align: center;
+}
+.ingredient-form input {
+  max-width: 500px;
+  font-size: 1em;
+  margin: 0.2em 0;
+}
+.ingredient-form .inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ingredient-form .form-buttons {
+  margin: 1em 0 0 0;
+}
+.ingredient-form .form-buttons button {
+  margin: 0 0.2em;
 }
