@@ -7,22 +7,31 @@ interface SearchResults {
 
 const SearchResults = ({recipes}: SearchResults) => {
   const recipeCards = recipes.map((recipe, index) => {
-    return (<RecipeCard 
-              key={index.toString()}
-              uri={recipe.uri}
-              label={recipe.label}
-              images={recipe.images}
-              url={recipe.url}
-              yield={recipe.yield}
-              dietLabels={recipe.dietLabels}
-              healthLabels={recipe.healthLabels}
-              calories={recipe.calories}
-              mealType={recipe.mealType}
-              cuisineType={recipe.cuisineType}
-            />)
+    return (
+      <RecipeCard 
+        key={index.toString()}
+        uri={recipe.uri}
+        label={recipe.label}
+        images={recipe.images}
+        url={recipe.url}
+        yield={recipe.yield}
+        dietLabels={recipe.dietLabels}
+        healthLabels={recipe.healthLabels}
+        calories={recipe.calories}
+        mealType={recipe.mealType}
+        cuisineType={recipe.cuisineType}
+      />
+      )
   });
+  
   return (
-    <section>{recipeCards}</section>
+    <section className="search-results">
+      {recipeCards.length && 
+        <div className='recipe-cards'>
+          {recipeCards}
+        </div> 
+      }
+    </section>
   )
 }
 
