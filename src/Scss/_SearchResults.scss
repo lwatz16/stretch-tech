@@ -2,11 +2,22 @@
     padding: 2em;
     margin-top: 2em;
     .recipe-cards {
+        border-radius: 30px;
         padding: 2em;
         background-color: white;
-        
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        
+        grid-template-columns: 1fr;
+        @include breakpoint(medium) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @include breakpoint(large) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        @include breakpoint(wide) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        @include breakpoint(wider) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
     }
 }
