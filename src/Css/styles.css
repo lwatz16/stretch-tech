@@ -54,7 +54,7 @@ main {
   margin: auto;
 }
 .ingredient-form h2 {
-  margin: 0 0 1em 0;
+  margin: 0;
   text-align: center;
 }
 .ingredient-form input {
@@ -79,16 +79,16 @@ main {
 }
 .ingredient-form .form-buttons button {
   margin: 0 0.2em;
+  padding: 0 1em;
+}
+.ingredient-form .ingredients-to-search {
+  font-style: italic;
 }
 
 .add-input-btn {
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-}
-
-.search-btn {
-  padding: 0 1em;
+  background-color: #fff;
+  color: #EB7F02;
+  border: 2px solid #EB7F02;
 }
 
 .search-results {
