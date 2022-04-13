@@ -26,9 +26,11 @@ const SearchResults = ({recipes}: SearchResults) => {
   
   return (
     <section className="search-results">
-      <div className='recipe-cards'>
-        {recipeCards}
-      </div>
+      {recipeCards.length && 
+        <div className='recipe-cards'>
+          {recipeCards}
+        </div> 
+      }
     </section>
   )
 }
