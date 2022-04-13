@@ -1,5 +1,12 @@
 .search-results {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 2em;
     margin-top: 2em;
+    .recipe-cards {
+        padding: 2em;
+        background-color: white;
+        
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        
+    }
 }
