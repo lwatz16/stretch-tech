@@ -2,10 +2,11 @@ import type {RecipeInterface} from '../App';
 import RecipeCard from './RecipeCard';
 
 interface SearchResults {
-  recipes: RecipeInterface[]
+  recipes: RecipeInterface[],
+  seeRecipe: () => void
 }
 
-const SearchResults = ({recipes}: SearchResults) => {
+const SearchResults = ({recipes, seeRecipe}: SearchResults) => {
   const recipeCards = recipes.map((recipe, index) => {
     return (
       <RecipeCard 
@@ -20,6 +21,7 @@ const SearchResults = ({recipes}: SearchResults) => {
         calories={recipe.calories}
         mealType={recipe.mealType}
         cuisineType={recipe.cuisineType}
+        seeRecipe={seeRecipe}
       />
       )
   });
