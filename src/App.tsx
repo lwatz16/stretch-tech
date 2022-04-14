@@ -48,6 +48,10 @@ class App extends Component {
     })
   }
 
+  backToSearchResults = () => {
+    this.setState({ singleRecipeView: false })
+  }
+
   render() {
     return (
       <div className="App">
@@ -56,7 +60,7 @@ class App extends Component {
         <main>
           {!this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />}
           {!this.state.singleRecipeView && <SearchResults recipes={this.state.recipes} />}
-          {this.state.singleRecipeView && <SingleRecipe />}
+          {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults}/>}
         </main>
       </div>
     );
