@@ -6,7 +6,11 @@ interface SingleRecipeProps {
   backToSearchResults: () => void
 }
 
-class SingleRecipe extends Component<SingleRecipeProps, RecipeInterface> {
+interface SingleRecipeState extends RecipeInterface {
+  ingredientLines: string[]
+}
+
+class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
   constructor(props: SingleRecipeProps) {
     super(props);
     this.state = {
@@ -24,12 +28,14 @@ class SingleRecipe extends Component<SingleRecipeProps, RecipeInterface> {
       calories: 0,
       mealType: [],
       cuisineType: [],
+      ingredientLines: []
     }
   }
 
   getRecipe = (uri: string) => {
     apiCalls.fetchSingleRecipe(uri)
-      .then(data => this.setState({ uri: data.recipe.uri, label: data.recipe.label, url: data.recipe.label, yield: data.recipe.yield, dietLabels: data.recipe.dietLabels, healthLabels: data.recipe.healthLabels, calories: data.recipe.calories, mealType: data.recipe.mealType, cuisineType: data.recipe.cuisineType, images: {REGULAR: {url: data.recipe.images.REGULAR.url}} }))
+      .then(data => this.setState({ uri: data.recipe.uri, label: data.recipe.label, url: data.recipe.label, yield: data.recipe.yield, dietLabels: data.recipe.dietLabels, healthLabels: data.recipe.healthLabels, calories: data.recipe.calories, mealType: data.recipe.mealType, cuisineType: data.recipe.cuisineType, images: {REGULAR: {url: data.recipe.images.REGULAR.url}}, ingredientLines: data.recipe.ingredientLines }))
+      .catch(err => console.log(err));
   }
 
   render() {
