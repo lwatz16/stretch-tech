@@ -1,12 +1,15 @@
 import type {RecipeInterface} from '../App';
 import RecipeCard from './RecipeCard';
+import FilterMenu from './FilterMenu'
+import { isPropertySignature } from 'typescript';
 
-interface SearchResults {
+interface SearchResultsProps {
   recipes: RecipeInterface[],
-  seeRecipe: (uri: string) => void
+  seeRecipe: (uri: string) => void,
+  healthLabels: string[]
 }
 
-const SearchResults = ({recipes, seeRecipe}: SearchResults) => {
+const SearchResults = ({recipes, seeRecipe, healthLabels}: SearchResultsProps) => {
   const recipeCards = recipes.map((recipe, index) => {
     return (
       <RecipeCard 
@@ -29,9 +32,12 @@ const SearchResults = ({recipes, seeRecipe}: SearchResults) => {
   return (
     <section className="search-results">
       {recipeCards.length && 
-        <div className='recipe-cards'>
-          {recipeCards}
-        </div> 
+        <div>
+          <FilterMenu healthLabels={healthLabels}/>
+          <div className='recipe-cards'>
+            {recipeCards}
+          </div> 
+        </div>
       }
     </section>
   )

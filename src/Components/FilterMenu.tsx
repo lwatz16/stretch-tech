@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
-// import { isPropertySignature } from 'typescript';
 
-// interface FilterMenuProps {
+interface FilterMenuProps {
+  healthLabels: string[]
+}
 
-// }
+interface FilterMenuState {
+  filter: string
+}
 
-// interface FilterMenuState {
-//   filter: string
-// }
+class FilterMenu extends Component<FilterMenuProps, FilterMenuState> {
+  constructor(props: FilterMenuProps) {
+    super(props)
+    this.state = {
+      filter: ''
+    }
+  }
 
-// class FilterMenu extends Component<FilterMenuProps, FilterMenuState> {
-//   constructor(props) {
-//     super(props)
-//     this.state {
-//       filter: ''
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <select>
+  render() {
+    return (
+      <select>
         
-//       </select>
-//     )
-//   }
-// }
+      </select>
+    )
+  }
+}
 
-// export default FilterMenu;
+export default FilterMenu;

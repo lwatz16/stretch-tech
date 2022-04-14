@@ -76,7 +76,7 @@ class App extends Component {
         <Header />
         <main>
           {!this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />}
-          {!this.state.singleRecipeView && <SearchResults recipes={this.state.recipes} seeRecipe={this.seeRecipe} />}
+          {!this.state.singleRecipeView && <SearchResults healthLabels={this.state.healthLabels} recipes={this.state.recipes} seeRecipe={this.seeRecipe} />}
           {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} />}
         </main>
       </div>
