@@ -46,6 +46,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
     let healthLabels = this.state.dietLabels.join(', ');
     let mealType = this.state.mealType.join(', ');
     let cuisineType = this.state.cuisineType.join(', ');
+    let ingredientsList = this.state.ingredientLines.map(ingredient => <p>{ingredient}</p>)
 
     return (
       <section className='single-recipe-wrapper'>
@@ -58,6 +59,8 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
         <p>{healthLabels}</p>
         <p>{mealType}</p>
         <p>{cuisineType}</p>
+        <p>Ingredients: </p>
+        <p>{ingredientsList}</p>
         <a href={this.state.url} target='_blank'><button>See Full Recipe</button></a>
       </section>
     )
