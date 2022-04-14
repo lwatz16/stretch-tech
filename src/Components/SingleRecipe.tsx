@@ -49,10 +49,11 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
 
     return (
       <section className='single-recipe-wrapper'>
+        <button type='button' onClick={this.props.backToSearchResults}>Back to Results</button>
         <img src={this.state.images.REGULAR.url} alt={this.state.label}/>
         <h2>{this.state.label}</h2>
-        <p>{this.state.yield}</p>
-        <p>{this.state.calories.toFixed(2)}</p>
+        <p>{this.state.yield} servings</p>
+        <p>{this.state.calories.toFixed(2)} cal</p>
         <p>{dietLabels}</p>
         <p>{healthLabels}</p>
         <p>{mealType}</p>
