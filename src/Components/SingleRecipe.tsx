@@ -58,7 +58,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
         <p>{healthLabels}</p>
         <p>{mealType}</p>
         <p>{cuisineType}</p>
-        <button><a href={this.state.url} target='_blank'>See Full Recipe</a></button>
+        <a href={this.state.url} target='_blank'><button>See Full Recipe</button></a>
       </section>
     )
   }
