@@ -3,7 +3,7 @@ import RecipeCard from './RecipeCard';
 
 interface SearchResults {
   recipes: RecipeInterface[],
-  seeRecipe: () => void
+  seeRecipe: (uri: string) => void
 }
 
 const SearchResults = ({recipes, seeRecipe}: SearchResults) => {

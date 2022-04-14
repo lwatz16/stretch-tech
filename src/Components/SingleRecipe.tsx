@@ -3,7 +3,8 @@ import type { RecipeInterface } from '../App';
 import apiCalls from '../apiCalls';
 
 interface SingleRecipeProps {
-  backToSearchResults: () => void
+  backToSearchResults: () => void,
+  uri: string
 }
 
 interface SingleRecipeState extends RecipeInterface {
@@ -37,6 +38,8 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
       .then(data => this.setState({ uri: data.recipe.uri, label: data.recipe.label, url: data.recipe.label, yield: data.recipe.yield, dietLabels: data.recipe.dietLabels, healthLabels: data.recipe.healthLabels, calories: data.recipe.calories, mealType: data.recipe.mealType, cuisineType: data.recipe.cuisineType, images: {REGULAR: {url: data.recipe.images.REGULAR.url}}, ingredientLines: data.recipe.ingredientLines }))
       .catch(err => console.log(err));
   }
+
+  componentDidMount = () => this.getRecipe(this.props.uri)
 
   render() {
     return (

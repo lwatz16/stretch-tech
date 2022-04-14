@@ -25,7 +25,7 @@ interface RecipeInterface {
 
 interface StateInterface {
   recipes: RecipeInterface[],
-  singleRecipeView: boolean,
+  singleRecipeView: string,
   error: boolean
 } 
 
@@ -36,20 +36,19 @@ interface IndividualRecipe {
 class App extends Component {
   state: StateInterface = {
     recipes: [],
-    singleRecipeView: false,
+    singleRecipeView: '',
     error: false
   }
 
   searchForRecipes = (ingredients: string[]) => {
-    
     apiCalls.searchRecipes(ingredients).then(data => {
       let allRecipes = data.hits.map((recipe: IndividualRecipe) => recipe.recipe)
       this.setState({ recipes: allRecipes })
     })
   }
 
-  seeRecipe = () => {
-    this.setState({ singleRecipeView: true });
+  seeRecipe = (uri: string) => {
+    this.setState({ singleRecipeView: uri });
   }
 
   backToSearchResults = () => {
@@ -64,7 +63,7 @@ class App extends Component {
         <main>
           {!this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />}
           {!this.state.singleRecipeView && <SearchResults recipes={this.state.recipes} seeRecipe={this.seeRecipe} />}
-          {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults}/>}
+          {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView}/>}
         </main>
       </div>
     );
