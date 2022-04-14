@@ -16,14 +16,18 @@ class FilterMenu extends Component<FilterMenuProps, FilterMenuState> {
     }
   }
 
+  updateFilter = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    this.setState({ filter: e.target.value })
+  }
+
   render() {
     let options = this.props.healthLabels.map(label => {
       return <option key={label} value={label}> {label} </option>
     })
     
     return (
-      <select name="filter" value={this.state.filter}>
-        <option value={this.state.filter} disabled> Choose a Health Label </option>
+      <select name="filter" value={this.state.filter} onChange={(e) => this.updateFilter(e)}>
+        <option value="" disabled> Choose a Health Label </option>
         {options}
       </select>
     )
