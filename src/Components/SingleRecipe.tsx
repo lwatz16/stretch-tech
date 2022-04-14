@@ -27,6 +27,11 @@ class SingleRecipe extends Component<SingleRecipeProps, RecipeInterface> {
     }
   }
 
+  getRecipe = (uri: string) => {
+    apiCalls.fetchSingleRecipe(uri)
+      .then(data => this.setState({ uri: data.recipe.uri, label: data.recipe.label, url: data.recipe.label, yield: data.recipe.yield, dietLabels: data.recipe.dietLabels, healthLabels: data.recipe.healthLabels, calories: data.recipe.calories, mealType: data.recipe.mealType, cuisineType: data.recipe.cuisineType, images: {REGULAR: {url: data.recipe.images.REGULAR.url}} }))
+  }
+
   render() {
     return (
       <section>
