@@ -26,7 +26,8 @@ interface RecipeInterface {
 interface StateInterface {
   recipes: RecipeInterface[],
   singleRecipeView: string,
-  error: boolean
+  error: boolean,
+  healthLabels: string[]
 } 
 
 interface IndividualRecipe {
@@ -36,6 +37,7 @@ interface IndividualRecipe {
 class App extends Component {
   state: StateInterface = {
     recipes: [],
+    healthLabels: [],
     singleRecipeView: '',
     error: false
   }
@@ -43,8 +45,20 @@ class App extends Component {
   searchForRecipes = (ingredients: string[]) => {
     apiCalls.searchRecipes(ingredients).then(data => {
       let allRecipes = data.hits.map((recipe: IndividualRecipe) => recipe.recipe)
-      this.setState({ recipes: allRecipes })
+      this.setState({ recipes: allRecipes, healthLabels: this.getHealthLabels(allRecipes) })
     })
+  }
+
+  getHealthLabels = (recipes: RecipeInterface[]) => {
+    let healthLabels: string[] = [];
+    recipes.forEach((recipe: RecipeInterface) => {
+      recipe.healthLabels.forEach(( label: string ) => {
+        if (!healthLabels.includes(label)) {
+          healthLabels.push(label);
+        }
+      })
+    })
+    return healthLabels;
   }
 
   seeRecipe = (uri: string) => {
