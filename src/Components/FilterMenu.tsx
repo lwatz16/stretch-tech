@@ -17,9 +17,14 @@ class FilterMenu extends Component<FilterMenuProps, FilterMenuState> {
   }
 
   render() {
+    let options = this.props.healthLabels.map(label => {
+      return <option key={label} value={label}> {label} </option>
+    })
+    
     return (
-      <select>
-        
+      <select name="filter" value={this.state.filter}>
+        <option value={this.state.filter} disabled> Choose a Health Label </option>
+        {options}
       </select>
     )
   }
