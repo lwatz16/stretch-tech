@@ -42,9 +42,21 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
   componentDidMount = () => this.getRecipe(this.props.uri)
 
   render() {
-    return (
-      <section>
+    let dietLabels = this.state.dietLabels.join(', ');
+    let healthLabels = this.state.dietLabels.join(', ');
+    let mealType = this.state.mealType.join(', ');
+    let cuisineType = this.state.cuisineType.join(', ');
 
+    return (
+      <section className='single-recipe-wrapper'>
+        <img src={this.state.images.REGULAR.url} alt={this.state.label}/>
+        <h2>{this.state.label}</h2>
+        <p>{this.state.yield}</p>
+        <p>{this.state.calories.toFixed(2)}</p>
+        <p>{dietLabels}</p>
+        <p>{healthLabels}</p>
+        <p>{mealType}</p>
+        <p>{cuisineType}</p>
       </section>
     )
   }
