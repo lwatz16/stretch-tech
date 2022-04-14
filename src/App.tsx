@@ -27,7 +27,8 @@ interface StateInterface {
   recipes: RecipeInterface[],
   singleRecipeView: string,
   error: boolean,
-  healthLabels: string[]
+  healthLabels: string[],
+  filterBy: string
 } 
 
 interface IndividualRecipe {
@@ -39,7 +40,8 @@ class App extends Component {
     recipes: [],
     healthLabels: [],
     singleRecipeView: '',
-    error: false
+    error: false,
+    filterBy: ''
   }
 
   searchForRecipes = (ingredients: string[]) => {
@@ -61,6 +63,10 @@ class App extends Component {
     return healthLabels;
   }
 
+  applyFilter = (filter: string) => {
+    this.setState({ filterBy: filter})
+  }
+
   seeRecipe = (uri: string) => {
     this.setState({ singleRecipeView: uri });
   }
@@ -76,7 +82,7 @@ class App extends Component {
         <Header />
         <main>
           {!this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />}
-          {!this.state.singleRecipeView && <SearchResults healthLabels={this.state.healthLabels} recipes={this.state.recipes} seeRecipe={this.seeRecipe} />}
+          {!this.state.singleRecipeView && <SearchResults applyFilter={this.applyFilter} filterBy={this.state.filterBy} healthLabels={this.state.healthLabels} recipes={this.state.recipes} seeRecipe={this.seeRecipe} />}
           {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} />}
         </main>
       </div>

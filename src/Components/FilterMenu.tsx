@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 interface FilterMenuProps {
-  healthLabels: string[]
+  healthLabels: string[],
+  applyFilter: (filter: string) => void
 }
 
 interface FilterMenuState {
@@ -18,6 +19,7 @@ class FilterMenu extends Component<FilterMenuProps, FilterMenuState> {
 
   updateFilter = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     this.setState({ filter: e.target.value })
+    this.props.applyFilter(e.target.value)
   }
 
   render() {
