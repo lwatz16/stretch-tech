@@ -180,3 +180,8 @@ main {
   background-color: #EB7F02;
   color: #fff;
 }
+
+.single-recipe-wrapper {
+  background-color: #fff;
+  max-width: 1000px;
+}

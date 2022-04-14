@@ -1,7 +1,8 @@
 import type {RecipeInterface} from '../App';
 
 interface RecipeCardProps extends RecipeInterface {
-  key: string
+  key: string,
+  seeRecipe: (uri: string) => void
 }
 
 const RecipeCard = (props: RecipeCardProps) => {
@@ -12,7 +13,7 @@ const RecipeCard = (props: RecipeCardProps) => {
           <h3>{props.label}</h3>
           <p>{props.calories.toFixed(0)} cal</p>
         </div>
-        <button>View</button>
+        <button onClick={() => props.seeRecipe(props.uri)}>View</button>
       </div>
       <img src={props.images.REGULAR.url} />
     </article>

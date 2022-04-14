@@ -12,6 +12,12 @@ const apiCalls = {
 
     return fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${ingredientsToSearch}&app_id=${appId}&app_key=${appKey}`)
       .then(response => response.json())
+  },
+  fetchSingleRecipe(uri: string) {
+    let id = uri.split('#recipe_')[1];
+
+    return fetch(`https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${appId}&app_key=${appKey}`)
+      .then(response => response.json())
   }
 }
 
