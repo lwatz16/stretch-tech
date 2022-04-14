@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 interface FilterMenuProps {
   healthLabels: string[],
@@ -28,10 +28,13 @@ class FilterMenu extends Component<FilterMenuProps, FilterMenuState> {
     })
     
     return (
-      <select name="filter" value={this.state.filter} onChange={(e) => this.updateFilter(e)}>
-        <option value="" disabled> Choose a Health Label </option>
-        {options}
-      </select>
+      <div>
+        <label htmlFor="filter"> Filter: </label>
+          <select name="filter" value={this.state.filter} onChange={(e) => this.updateFilter(e)}>
+            <option value=""> Show all Recipes </option>
+            {options}
+          </select>
+      </div>
     )
   }
 }
