@@ -60,7 +60,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
         <p>{mealType}</p>
         <p>{cuisineType}</p>
         <p>Ingredients: </p>
-        <p>{ingredientsList}</p>
+        {ingredientsList}
         <a href={this.state.url} target='_blank'><button>See Full Recipe</button></a>
       </section>
     )
