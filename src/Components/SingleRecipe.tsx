@@ -35,7 +35,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
 
   getRecipe = (uri: string) => {
     apiCalls.fetchSingleRecipe(uri)
-      .then(data => this.setState({ uri: data.recipe.uri, label: data.recipe.label, url: data.recipe.label, yield: data.recipe.yield, dietLabels: data.recipe.dietLabels, healthLabels: data.recipe.healthLabels, calories: data.recipe.calories, mealType: data.recipe.mealType, cuisineType: data.recipe.cuisineType, images: {REGULAR: {url: data.recipe.images.REGULAR.url}}, ingredientLines: data.recipe.ingredientLines }))
+      .then(data => this.setState({ uri: data.recipe.uri, label: data.recipe.label, url: data.recipe.url, yield: data.recipe.yield, dietLabels: data.recipe.dietLabels, healthLabels: data.recipe.healthLabels, calories: data.recipe.calories, mealType: data.recipe.mealType, cuisineType: data.recipe.cuisineType, images: {REGULAR: {url: data.recipe.images.REGULAR.url}}, ingredientLines: data.recipe.ingredientLines }))
       .catch(err => console.log(err));
   }
 
@@ -58,6 +58,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
         <p>{healthLabels}</p>
         <p>{mealType}</p>
         <p>{cuisineType}</p>
+        <button><a href={this.state.url} target='_blank'>See Full Recipe</a></button>
       </section>
     )
   }
