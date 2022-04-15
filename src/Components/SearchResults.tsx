@@ -38,6 +38,7 @@ const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy,
       )
   });
   
+  
   return (
     <section className="search-results">
       {!!error.length && <div className='error'>{error}</div>}
