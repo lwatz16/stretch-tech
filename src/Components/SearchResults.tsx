@@ -1,7 +1,6 @@
 import type {RecipeInterface} from '../App';
 import RecipeCard from './RecipeCard';
-import FilterMenu from './FilterMenu'
-import { isPropertySignature } from 'typescript';
+import FilterMenu from './FilterMenu';
 
 interface SearchResultsProps {
   recipes: RecipeInterface[],
@@ -13,46 +12,30 @@ interface SearchResultsProps {
 
 const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy}: SearchResultsProps) => {
   let recipeCards;
-  if (!filterBy) {
-    recipeCards = recipes.map((recipe, index) => {
-      return (
-        <RecipeCard 
-          key={index.toString()}
-          uri={recipe.uri}
-          label={recipe.label}
-          images={recipe.images}
-          url={recipe.url}
-          yield={recipe.yield}
-          dietLabels={recipe.dietLabels}
-          healthLabels={recipe.healthLabels}
-          calories={recipe.calories}
-          mealType={recipe.mealType}
-          cuisineType={recipe.cuisineType}
-          seeRecipe={seeRecipe}
-        />
-        )
-    });
-  } else {
-    const filteredRecipes = recipes.filter(recipe => recipe.healthLabels.includes(filterBy))
-    recipeCards = filteredRecipes.map((recipe, index) => {
-      return (
-        <RecipeCard 
-          key={index.toString()}
-          uri={recipe.uri}
-          label={recipe.label}
-          images={recipe.images}
-          url={recipe.url}
-          yield={recipe.yield}
-          dietLabels={recipe.dietLabels}
-          healthLabels={recipe.healthLabels}
-          calories={recipe.calories}
-          mealType={recipe.mealType}
-          cuisineType={recipe.cuisineType}
-          seeRecipe={seeRecipe}
-        />
-        )
-    });
-}
+  let filteredRecipes = recipes;
+  
+  if(filterBy) {
+    filteredRecipes = filteredRecipes.filter(recipe => recipe.healthLabels.includes(filterBy))
+  }
+
+  recipeCards = filteredRecipes.map((recipe, index) => {
+    return (
+      <RecipeCard 
+        key={index.toString()}
+        uri={recipe.uri}
+        label={recipe.label}
+        images={recipe.images}
+        url={recipe.url}
+        yield={recipe.yield}
+        dietLabels={recipe.dietLabels}
+        healthLabels={recipe.healthLabels}
+        calories={recipe.calories}
+        mealType={recipe.mealType}
+        cuisineType={recipe.cuisineType}
+        seeRecipe={seeRecipe}
+      />
+      )
+  });
   
   return (
     <section className="search-results">
