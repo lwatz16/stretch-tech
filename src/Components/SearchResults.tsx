@@ -1,13 +1,24 @@
 import type {RecipeInterface} from '../App';
 import RecipeCard from './RecipeCard';
+import FilterMenu from './FilterMenu';
 
-interface SearchResults {
+interface SearchResultsProps {
   recipes: RecipeInterface[],
-  seeRecipe: (uri: string) => void
+  seeRecipe: (uri: string) => void,
+  healthLabels: string[],
+  applyFilter: (filter: string) => void,
+  filterBy: string
 }
 
-const SearchResults = ({recipes, seeRecipe}: SearchResults) => {
-  const recipeCards = recipes.map((recipe, index) => {
+const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy}: SearchResultsProps) => {
+  let recipeCards;
+  let filteredRecipes = recipes;
+  
+  if(filterBy) {
+    filteredRecipes = filteredRecipes.filter(recipe => recipe.healthLabels.includes(filterBy))
+  }
+
+  recipeCards = filteredRecipes.map((recipe, index) => {
     return (
       <RecipeCard 
         key={index.toString()}
@@ -29,9 +40,12 @@ const SearchResults = ({recipes, seeRecipe}: SearchResults) => {
   return (
     <section className="search-results">
       {recipeCards.length && 
-        <div className='recipe-cards'>
-          {recipeCards}
-        </div> 
+        <div>
+          <FilterMenu applyFilter={applyFilter} healthLabels={healthLabels}/>
+          <div className='recipe-cards'>
+            {recipeCards}
+          </div> 
+        </div>
       }
     </section>
   )
