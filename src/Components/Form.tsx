@@ -19,7 +19,10 @@ class Form extends Component<Props, State> {
   }
 
   updateForm = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ ingredientToAdd: e.target.value })
+    const reg = /[^a-zA-Z]/;
+    if (!reg.test(e.currentTarget.value)) {
+      this.setState({ ingredientToAdd: e.target.value })
+    }
   }
 
   getRecipes = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
