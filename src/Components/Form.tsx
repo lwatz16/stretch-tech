@@ -65,7 +65,7 @@ class Form extends Component<Props, State> {
           <input type='text' placeholder='example: chicken' value={this.state.ingredientToAdd} name="ingredient-field" onChange={(e) => this.updateForm(e)} />
           <div className="form-buttons">
             <button type='button' aria-label='Add New Search Field' className='add-input-btn' onClick={(e) => this.addField(e)}>Add Ingredient</button>
-            <button className='search-btn' onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
+            <button className='search-btn' disabled={this.state.ingredients.length ? false : true} onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
           </div>
         </div>
       </form>
