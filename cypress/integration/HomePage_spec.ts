@@ -75,7 +75,9 @@ describe('HomePage', () => {
   })
 
   it('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
-    cy.intercept(`https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`)
+    cy.intercept(`https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+      fixture: 'search-results.json'
+    })
     
     cy.get('input')
       .type('chicken')
@@ -87,7 +89,7 @@ describe('HomePage', () => {
       .click()
 
     cy.get('.recipe-cards').children('article')
-      .should('have.length', 20)
+      .should('have.length', 2)
       .contains('h3')
       .and('contain', 'cal')
       .contains('p')
