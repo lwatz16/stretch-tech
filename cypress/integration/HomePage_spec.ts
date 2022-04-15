@@ -74,4 +74,28 @@ describe('HomePage', () => {
 
   })
 
+  it.only('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
+    cy.get('input')
+      .type('chicken')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+
+    cy.get('.recipe-cards').children('article')
+      .should('have.length', 20)
+      .contains('h3')
+      .and('contain', 'cal')
+      .contains('p')
+    
+    cy.get('img')
+      .should('have.attr', 'src')
+      // add alt to img
+
+    cy.get('button')
+      .contains('View')
+  })
+
 })
