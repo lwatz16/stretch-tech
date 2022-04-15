@@ -1,3 +1,5 @@
+import { should } from "chai"
+
 describe('HomePage', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
@@ -16,11 +18,31 @@ describe('HomePage', () => {
       .and('contain', 'https://images.unsplash.com/photo-1543352634-99a5d50ae78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80')
   })
 
-  
-
-
-  it('should see a form that contains one input, an add ingredient button, and a search button', () => {
+  it('should see a form that contains one input, an add ingredient button, a search button, and clear ingredients button', () => {
     cy.get('form')
       .contains('What ingredients would you like to use?')
+
+    cy.get('input')
+      .should('have.attr', 'placeholder')
+      .and('contain', 'example: chicken')
+
+    cy.get('button')
+      .first()
+      .should('have.class', 'clear-ingredients')
+
+    cy.get('button')
+      .last()
+      .should('have.class', 'search-btn')
+
+    cy.get('button')
+      .should('have.class', 'add-input-btn')
+      // .should('have.attr', 'aria-label')
+      .and('contain', 'Add Ingredient')
   })
+
+  it('should contain a list of ingredients that I searched for. (On page load, there are none.)', () => {
+    cy.get('.ingredients-to-search')
+      .contains('Ingredient list: none')
+  })
+
 })
