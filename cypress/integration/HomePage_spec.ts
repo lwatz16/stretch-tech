@@ -51,4 +51,27 @@ describe('HomePage', () => {
       .should('have.value', 'chicken')
   })
 
+  it('should add the text from my input field into the list of ingredients when I click the "Add Ingredient" button', () => {
+    cy.get('input')
+      .type('fish')
+      .should('have.value', 'fish')
+
+    cy.get('.add-input-btn')
+      .click()
+    
+    cy.get('.ingredients-to-search')
+      .contains('Ingredient list: fish')
+
+    cy.get('input')
+      .type('avocado')
+      .should('have.value', 'avocado')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.ingredients-to-search')
+      .contains('Ingredient list: fish, avocado')
+
+  })
+
 })
