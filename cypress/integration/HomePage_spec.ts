@@ -1,4 +1,5 @@
-import { should } from "chai"
+const appId = process.env.REACT_APP_EDAMAN_API_ID
+const appKey = process.env.REACT_APP_EDAMAN_API_KEY
 
 describe('HomePage', () => {
   beforeEach(() => {
@@ -36,11 +37,10 @@ describe('HomePage', () => {
 
     cy.get('button')
       .should('have.class', 'add-input-btn')
-      // .should('have.attr', 'aria-label')
       .and('contain', 'Add Ingredient')
   })
 
-  it('should contain a list of ingredients that I searched for. (On page load, there are none.)', () => {
+  it('should contain a list of ingredients that I am searching for. (On page load, there are none.)', () => {
     cy.get('.ingredients-to-search')
       .contains('Ingredient list: none')
   })
@@ -74,7 +74,9 @@ describe('HomePage', () => {
 
   })
 
-  it.only('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
+  it('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
+    cy.intercept(`https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`)
+    
     cy.get('input')
       .type('chicken')
 
@@ -97,5 +99,9 @@ describe('HomePage', () => {
     cy.get('button')
       .contains('View')
   })
+
+  // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
+
+  // })
 
 })
