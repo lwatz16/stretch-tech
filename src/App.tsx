@@ -47,11 +47,9 @@ class App extends Component {
   searchForRecipes = (ingredients: string[]) => {
     apiCalls.searchRecipes(ingredients).then(data => {
       let allRecipes = data.hits.map((recipe: IndividualRecipe) => recipe.recipe)
-      console.log(allRecipes)
       this.setState({ error: '' });
       if (!allRecipes.length) {
         this.setState({ error: 'No search results found. Please try a different combination.' });
-        console.log(allRecipes, 'error')
       }
       this.setState({ recipes: allRecipes, healthLabels: this.getHealthLabels(allRecipes) })
     }).catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }))

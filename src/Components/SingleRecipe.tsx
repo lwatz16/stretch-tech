@@ -48,7 +48,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
     let healthLabels = this.state.dietLabels.join(', ');
     let mealType = this.state.mealType.join(', ');
     let cuisineType = this.state.cuisineType.join(', ');
-    let ingredientsList = this.state.ingredientLines.map(ingredient => <p>{ingredient}</p>)
+    let ingredientsList = this.state.ingredientLines.map((ingredient, index) => <p key={index}>{ingredient}</p>)
 
     return (
       <section className='single-recipe-wrapper'>
