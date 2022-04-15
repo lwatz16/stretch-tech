@@ -50,8 +50,8 @@ class App extends Component {
       if (!allRecipes.length) {
         this.setState({ error: 'No search results found. Please try a different combination.' });
       }
-      this.setState({ recipes: allRecipes, healthLabels: this.getHealthLabels(allRecipes) })
-    })
+      this.setState({ recipes: allRecipes, healthLabels: this.getHealthLabels(allRecipes), error: '' })
+    }).catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }))
   }
 
   getHealthLabels = (recipes: RecipeInterface[]) => {
