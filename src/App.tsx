@@ -26,7 +26,7 @@ interface RecipeInterface {
 interface StateInterface {
   recipes: RecipeInterface[],
   singleRecipeView: string,
-  error: boolean,
+  error: string,
   healthLabels: string[],
   filterBy: string
 } 
@@ -40,13 +40,16 @@ class App extends Component {
     recipes: [],
     healthLabels: [],
     singleRecipeView: '',
-    error: false,
+    error: '',
     filterBy: ''
   }
 
   searchForRecipes = (ingredients: string[]) => {
     apiCalls.searchRecipes(ingredients).then(data => {
       let allRecipes = data.hits.map((recipe: IndividualRecipe) => recipe.recipe)
+      if (!allRecipes.length) {
+        this.setState({ error: 'No search results found. Please try a different combination.' });
+      }
       this.setState({ recipes: allRecipes, healthLabels: this.getHealthLabels(allRecipes) })
     })
   }
@@ -82,7 +85,16 @@ class App extends Component {
         <Header />
         <main>
           {!this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />}
-          {!this.state.singleRecipeView && <SearchResults applyFilter={this.applyFilter} filterBy={this.state.filterBy} healthLabels={this.state.healthLabels} recipes={this.state.recipes} seeRecipe={this.seeRecipe} />}
+          {!this.state.singleRecipeView && (
+            <SearchResults 
+              applyFilter={this.applyFilter} 
+              filterBy={this.state.filterBy} 
+              healthLabels={this.state.healthLabels} 
+              recipes={this.state.recipes} 
+              seeRecipe={this.seeRecipe} 
+              error={this.state.error}
+            />
+          )}
           {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} />}
         </main>
       </div>
