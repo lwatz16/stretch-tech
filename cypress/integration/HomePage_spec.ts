@@ -45,4 +45,10 @@ describe('HomePage', () => {
       .contains('Ingredient list: none')
   })
 
+  it('should update the input field to reflect the ingredient that I typed', () => {
+    cy.get('input')
+      .type('chicken')
+      .should('have.value', 'chicken')
+  })
+
 })
