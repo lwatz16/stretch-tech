@@ -9,7 +9,7 @@ const apiCalls = {
     } else {
       ingredientsToSearch = ingredient[0];
     }
-
+    
     return fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${ingredientsToSearch}&app_id=${appId}&app_key=${appKey}`)
       .then(response => response.json())
   },

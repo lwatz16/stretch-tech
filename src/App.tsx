@@ -95,7 +95,8 @@ class App extends Component {
         <main>
           <Route exact path="/" render={() => <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} />}/>
           {/* !this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />*/} 
-          <Route path="/:query" render={({ match }) => {
+          <Route path="/?ingredients=:query" render={({ match }) => {
+            // console.log(match.params)
            return (
               <div>
                 <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} />
@@ -106,6 +107,7 @@ class App extends Component {
                   recipes={this.state.recipes} 
                   seeRecipe={this.seeRecipe} 
                   error={this.state.error}
+                //  query={match.params.query}
                 />
               </div>
             )}
