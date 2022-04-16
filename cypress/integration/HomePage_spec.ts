@@ -178,7 +178,7 @@ describe('HomePage', () => {
       .should('have.value', 'Keto-Friendly')
   })
 
-  it.only('should update the search results to reflect the new filter selected from the dropdown menu', () => {
+  it.skip('should update the search results to reflect the new filter selected from the dropdown menu', () => {
     cy.get('input')
       .type('chicken')
 
@@ -194,6 +194,11 @@ describe('HomePage', () => {
     cy.get('.recipe-cards')
       .children('article')
       .should('have.length', 6)
+  })
+
+  it.only('should not be able to click search/find recipes until there is at least one ingredient entered.', () => {
+    cy.get('.search-btn')
+      .should('have.attr', 'disabled')
   })
 
   // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
