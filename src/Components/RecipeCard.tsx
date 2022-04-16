@@ -10,12 +10,12 @@ const RecipeCard = (props: RecipeCardProps) => {
     <article className="recipe-card">
       <div className="recipe-writing">
         <div className="recipe-details">
-          <h3>{props.label}</h3>
-          <p>{props.calories.toFixed(0)} cal</p>
+          <h3 className='recipe-title'>{props.label}</h3>
+          <p className='recipe-cals'>{props.calories.toFixed(0)} cal</p>
         </div>
         <button onClick={() => props.seeRecipe(props.uri)}>View</button>
       </div>
-      <img src={props.images.REGULAR.url} />
+      <img className='recipe-img' src={props.images.REGULAR.url} alt={`${props.label}`}/>
     </article>
   )
 }
