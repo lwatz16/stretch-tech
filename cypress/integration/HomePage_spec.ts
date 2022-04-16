@@ -23,7 +23,7 @@ describe('HomePage', () => {
       .and('contain', 'https://images.unsplash.com/photo-1543352634-99a5d50ae78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80')
   })
 
-  it('should see a form that contains one input, an add ingredient button, a search button, and clear ingredients button', () => {
+  it.only('should see a form that contains one input, an add ingredient button, a search button, and clear ingredients button', () => {
     cy.get('form')
       .contains('What ingredients would you like to use?')
 
@@ -39,9 +39,10 @@ describe('HomePage', () => {
       .last()
       .should('have.class', 'search-btn')
 
-    cy.get('button')
-      .should('have.class', 'add-input-btn')
-      .and('contain', 'Add Ingredient')
+    cy.get('.add-input-btn')
+      .contains('Add Ingredient')
+      .should('have.attr', 'aria-label')
+      .and('match', /Add New Search Field/)
   })
 
   it('should contain a list of ingredients that I am searching for. (On page load, there are none.)', () => {
@@ -196,9 +197,13 @@ describe('HomePage', () => {
       .should('have.length', 6)
   })
 
-  it.only('should not be able to click search/find recipes until there is at least one ingredient entered.', () => {
+  it.skip('should not be able to click search/find recipes until there is at least one ingredient entered.', () => {
     cy.get('.search-btn')
       .should('have.attr', 'disabled')
+  })
+
+  it.only('should display an error message on the search results container instead of recipes when the network request fails', () => {
+
   })
 
   // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
