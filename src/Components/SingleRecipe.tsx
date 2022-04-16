@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import type { RecipeInterface } from '../App';
 import apiCalls from '../apiCalls';
+import { Link } from 'react-router-dom';
 
 interface SingleRecipeProps {
   backToSearchResults: () => void,
@@ -54,7 +55,9 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
 
     return (
       <section className='single-recipe-wrapper'>
-        <button type='button' onClick={this.props.backToSearchResults}>Back to Results</button>
+        {/* <Link to={``}> */}
+          <button type='button' onClick={this.props.backToSearchResults}>Back to Results</button>
+        {/* </Link> */}
         <div className='error'>{this.state.error}</div>
         {!!this.state.uri.length && (
           <div>
