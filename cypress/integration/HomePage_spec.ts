@@ -3,8 +3,11 @@ describe('HomePage', () => {
   const appKey = Cypress.env('appKey')
   
   beforeEach(() => {
-
     cy.visit(Cypress.env('url'))
+
+    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+      fixture: 'search-results.json'
+    }).as('getRecipes')
 
     // cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
     //   fixture: 'search-results.json'
@@ -76,14 +79,13 @@ describe('HomePage', () => {
 
     cy.get('.ingredients-to-search')
       .contains('Ingredient list: fish, avocado')
-
   })
 
   it.only('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
     
-    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
-      fixture: 'search-results.json'
-    }).as('getRecipes')
+    // cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+    //   fixture: 'search-results.json'
+    // }).as('getRecipes')
 
     cy.get('input')
       .type('chicken')
@@ -94,16 +96,21 @@ describe('HomePage', () => {
     cy.get('.search-btn')
       .click()
 
+    cy.get('.recipe-img')
+      .should('have.attr', 'src')
+      // .should('have.attr', 'alt')
+
     cy.get('.recipe-cards')
       .children('article')
       .should('have.length', 2)
-      .contains('h3')
-      .and('contain', 'cal')
-      .contains('p')
-    
-    cy.get('img')
-      .should('have.attr', 'src')
-      // add alt to img
+
+    cy.get('.recipe-title')
+      .should('be.visible')
+      .should('have.css', 'color')
+      // .and('match', /#fff/)
+
+    cy.get('.recipe-cals')
+      .contains('cal')
 
     cy.get('button')
       .contains('View')
