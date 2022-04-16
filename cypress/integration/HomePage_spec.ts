@@ -92,7 +92,8 @@ describe('HomePage', () => {
     cy.get('.search-btn')
       .click()
 
-    cy.get('.recipe-cards').children('article')
+    cy.get('.recipe-cards')
+      .children('article')
       .should('have.length', 2)
       .contains('h3')
       .and('contain', 'cal')
@@ -132,7 +133,7 @@ describe('HomePage', () => {
       .contains('No search results found. Please try a different combination.')
   })
 
-  it.only('should display a dropdown menu with filtering options when my search results is found', () => {
+  it.skip('should display a dropdown menu with filtering options when my search results are first found', () => {
     cy.get('input')
       .type('chicken')
 
@@ -154,7 +155,28 @@ describe('HomePage', () => {
       .should('have.value', '')
   })
 
-  
+  it.only('should be able to click on the filter dropdown menu and select from a list of options', () => {
+    cy.get('input')
+      .type('chicken')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+
+    cy.get('select')
+      .children('option')
+      .should('have.length', 29)
+
+    cy.get('select')
+      .select('Show all Recipes')
+      .should('have.value', '')
+      .select('Kosher')
+      .should('have.value', 'Kosher')
+      .select('Keto-Friendly')
+      .should('have.value', 'Keto-Friendly')
+  })
 
   // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
 
