@@ -155,7 +155,7 @@ describe('HomePage', () => {
       .should('have.value', '')
   })
 
-  it.only('should be able to click on the filter dropdown menu and select from a list of options', () => {
+  it.skip('should be able to click on the filter dropdown menu and select from a list of options', () => {
     cy.get('input')
       .type('chicken')
 
@@ -176,6 +176,24 @@ describe('HomePage', () => {
       .should('have.value', 'Kosher')
       .select('Keto-Friendly')
       .should('have.value', 'Keto-Friendly')
+  })
+
+  it.only('should update the search results to reflect the new filter selected from the dropdown menu', () => {
+    cy.get('input')
+      .type('chicken')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+
+    cy.get('select')
+      .select('Keto-Friendly')
+
+    cy.get('.recipe-cards')
+      .children('article')
+      .should('have.length', 6)
   })
 
   // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
