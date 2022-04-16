@@ -1,6 +1,8 @@
 describe('HomePage', () => {
+  const appId = Cypress.env('appId')
+  const appKey = Cypress.env('appKey')
+  
   beforeEach(() => {
-    // cy.visit('http://localhost:3000/')
 
     cy.visit(Cypress.env('url'))
 
@@ -77,11 +79,12 @@ describe('HomePage', () => {
 
   })
 
-  it.skip('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
-    // cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
-    //   fixture: 'search-results.json'
-    // })
+  it.only('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
     
+    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+      fixture: 'search-results.json'
+    }).as('getRecipes')
+
     cy.get('input')
       .type('chicken')
 
