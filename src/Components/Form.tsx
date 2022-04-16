@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   searchForRecipes: (ingredient: string[]) => void;
+  loadCurrentIngredients: (ingredients: string[]) => void;
 }
 
 interface State {
@@ -27,7 +28,8 @@ class Form extends Component<Props, State> {
   }
 
   getRecipes = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    this.props.searchForRecipes(this.state.ingredients);
+    this.props.loadCurrentIngredients(this.state.ingredients)
+    // this.props.searchForRecipes(this.state.ingredients);
     this.clearIngredientField();
     this.clearSearchIngredients();
   }
