@@ -5,7 +5,6 @@ import FilterMenu from './FilterMenu';
 
 interface SearchResultsProps {
   recipes: RecipeInterface[],
-  seeRecipe: (uri: string) => void,
   healthLabels: string[],
   applyFilter: (filter: string) => void,
   filterBy: string,
@@ -14,7 +13,7 @@ interface SearchResultsProps {
   searchForRecipes: (ingredients: string[]) => void
 }
 
-const SearchResults = ({ recipes, seeRecipe, healthLabels, applyFilter, filterBy, error, query, searchForRecipes}: SearchResultsProps) => {
+const SearchResults = ({ recipes, healthLabels, applyFilter, filterBy, error, query, searchForRecipes}: SearchResultsProps) => {
   let recipeCards;
   let filteredRecipes = recipes;
   
@@ -36,7 +35,6 @@ const SearchResults = ({ recipes, seeRecipe, healthLabels, applyFilter, filterBy
         calories={recipe.calories}
         mealType={recipe.mealType}
         cuisineType={recipe.cuisineType}
-        seeRecipe={seeRecipe}
       />
       )
   });

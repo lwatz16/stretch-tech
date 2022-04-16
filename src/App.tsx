@@ -26,7 +26,6 @@ interface RecipeInterface {
 
 interface StateInterface {
   recipes: RecipeInterface[],
-  singleRecipeView: string,
   error: string,
   healthLabels: string[],
   filterBy: string,
@@ -41,7 +40,6 @@ class App extends Component {
   state: StateInterface = {
     recipes: [],
     healthLabels: [],
-    singleRecipeView: '',
     error: '',
     filterBy: '',
     currentIngredients: []
@@ -79,10 +77,6 @@ class App extends Component {
     this.setState({ filterBy: filter})
   }
 
-  seeRecipe = (uri: string) => {
-    this.setState({ singleRecipeView: uri })
-  }
-
   backToSearchResults = () => {
     this.setState({ singleRecipeView: false })
   }
@@ -104,8 +98,7 @@ class App extends Component {
                   applyFilter={this.applyFilter} 
                   filterBy={this.state.filterBy} 
                   healthLabels={this.state.healthLabels} 
-                  recipes={this.state.recipes} 
-                  seeRecipe={this.seeRecipe} 
+                  recipes={this.state.recipes}
                   error={this.state.error}
                   query={match.params.query}
                   searchForRecipes={this.searchForRecipes}
@@ -115,7 +108,7 @@ class App extends Component {
           }/>
           <Route path="/recipe/:recipeId" render={({ match }) => {
             return (
-              <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} recipeId={match.params.recipeId} seeRecipe={this.seeRecipe} />
+              <SingleRecipe backToSearchResults={this.backToSearchResults} recipeId={match.params.recipeId} />
             )
           }}/>
 

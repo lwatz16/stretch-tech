@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 interface RecipeCardProps extends RecipeInterface {
   key: string,
-  seeRecipe: (uri: string) => void
 }
 
 const RecipeCard = (props: RecipeCardProps) => {

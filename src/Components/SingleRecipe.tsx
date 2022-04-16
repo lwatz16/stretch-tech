@@ -4,9 +4,7 @@ import apiCalls from '../apiCalls';
 
 interface SingleRecipeProps {
   backToSearchResults: () => void,
-  uri: string,
   recipeId: string,
-  seeRecipe: (uri: string) => void
 }
 
 interface SingleRecipeState extends RecipeInterface {
@@ -43,9 +41,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
       .catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }));
   }
 
-  componentDidMount = async () => {
-    await this.props.seeRecipe(this.props.recipeId)
-    console.log(this.props.recipeId)
+  componentDidMount = () => {
     this.getRecipe(this.props.recipeId)
   }
 
