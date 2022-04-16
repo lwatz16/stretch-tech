@@ -1,9 +1,13 @@
-const appId = process.env.REACT_APP_EDAMAN_API_ID
-const appKey = process.env.REACT_APP_EDAMAN_API_KEY
+// const appId = process.env.REACT_APP_EDAMAN_API_ID
+// const appKey = process.env.REACT_APP_EDAMAN_API_KEY
+
+// console.log(appId)
 
 describe('HomePage', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
+    // cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+    //   fixture: 'search-results.json'
   })
 
   it('should display a header, background image and form', () => {
@@ -74,10 +78,10 @@ describe('HomePage', () => {
 
   })
 
-  it('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
-    cy.intercept(`https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
-      fixture: 'search-results.json'
-    })
+  it.skip('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
+    // cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+    //   fixture: 'search-results.json'
+    // })
     
     cy.get('input')
       .type('chicken')
@@ -100,6 +104,32 @@ describe('HomePage', () => {
 
     cy.get('button')
       .contains('View')
+  })
+
+  it.skip('should display a message when there are no recipes that match the search criteria (different from a network request failure)', () => {
+    cy.get('input')
+      .type('beef')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('input')
+      .type('banana')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('input')
+      .type('anchovies')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+    
+    cy.get('.error')
+      .contains('No search results found. Please try a different combination.')
   })
 
   // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
