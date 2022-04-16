@@ -132,6 +132,30 @@ describe('HomePage', () => {
       .contains('No search results found. Please try a different combination.')
   })
 
+  it.only('should display a dropdown menu with filtering options when my search results is found', () => {
+    cy.get('input')
+      .type('chicken')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+    
+    cy.get('label')
+      .contains('Filter:')
+
+    cy.get('select')
+      .should('have.value', '')
+
+    cy.get('option')
+      .first()
+      .contains('Show all Recipes')
+      .should('have.value', '')
+  })
+
+  
+
   // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
 
   // })
