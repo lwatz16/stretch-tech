@@ -2,9 +2,11 @@ describe('HomePage', () => {
   const appId = Cypress.env('appId')
   const appKey = Cypress.env('appKey')
 
-  it.only('should display an error message on the search results container when the network request fails', () => {
+  beforeEach(() => {
     cy.visit(Cypress.env('url'))
+  })
 
+  it('should display an error message on the search results container when the network request fails', () => {
     cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
       forceNetworkError: true
     }).as('getNetworkFailure')
@@ -23,15 +25,6 @@ describe('HomePage', () => {
       .and('contain', 'Something went wrong, please try again later.')
   })
   
-  beforeEach(() => {
-    cy.visit(Cypress.env('url'))
-
-    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
-      fixture: 'search-results.json'
-    }).as('getRecipes')
-
-  })
-
   it('should display a header, background image and form', () => {
     cy.get('form')
       .should('be.visible')
@@ -98,6 +91,14 @@ describe('HomePage', () => {
 
     cy.get('.ingredients-to-search')
       .contains('Ingredient list: fish, avocado')
+  })
+
+  beforeEach(() => {
+    cy.visit(Cypress.env('url'))
+
+    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+      fixture: 'search-results.json'
+    }).as('getRecipes')
   })
 
   it('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
