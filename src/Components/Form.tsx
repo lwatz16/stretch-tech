@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
   searchForRecipes: (ingredient: string[]) => void;
@@ -50,8 +51,10 @@ class Form extends Component<Props, State> {
 
   render() {
     let ingredients;
+    let queryString = '';
     if (this.state.ingredients.length) {
       ingredients = this.state.ingredients.join(', ');
+      queryString = this.state.ingredients.join('%20');
     } else {
       ingredients = 'none';
     }
@@ -67,7 +70,9 @@ class Form extends Component<Props, State> {
           <input type='text' placeholder='example: chicken' value={this.state.ingredientToAdd} name="ingredient-field" onChange={(e) => this.updateForm(e)} />
           <div className="form-buttons">
             <button type='button' aria-label='Add New Search Field' className='add-input-btn' onClick={(e) => this.addIngredient(e)}>Add Ingredient</button>
-            <button className='search-btn' disabled={this.state.ingredients.length ? false : true} onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
+            <Link to={`/?ingredients=${queryString}`}>
+              <button className='search-btn' disabled={this.state.ingredients.length ? false : true} onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
+            </Link>
           </div>
         </div>
       </form>
