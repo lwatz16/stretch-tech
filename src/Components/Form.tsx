@@ -19,7 +19,10 @@ class Form extends Component<Props, State> {
   }
 
   updateForm = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ ingredientToAdd: e.target.value })
+    const reg = /[^a-zA-Z]/;
+    if (!reg.test(e.currentTarget.value)) {
+      this.setState({ ingredientToAdd: e.target.value })
+    }
   }
 
   getRecipes = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -37,9 +40,11 @@ class Form extends Component<Props, State> {
     this.setState({ ingredients: [] });
   }
 
-  addField = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  addIngredient = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    this.setState({ ingredients: [...this.state.ingredients, this.state.ingredientToAdd] });
+    if (!this.state.ingredients.includes(this.state.ingredientToAdd)) {
+      this.setState({ ingredients: [...this.state.ingredients, this.state.ingredientToAdd] });
+    }
     this.clearIngredientField();
   }
 
@@ -61,8 +66,8 @@ class Form extends Component<Props, State> {
           </div>
           <input type='text' placeholder='example: chicken' value={this.state.ingredientToAdd} name="ingredient-field" onChange={(e) => this.updateForm(e)} />
           <div className="form-buttons">
-            <button type='button' aria-label='Add New Search Field' className='add-input-btn' onClick={(e) => this.addField(e)}>Add Ingredient</button>
-            <button className='search-btn' onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
+            <button type='button' aria-label='Add New Search Field' className='add-input-btn' onClick={(e) => this.addIngredient(e)}>Add Ingredient</button>
+            <button className='search-btn' disabled={this.state.ingredients.length ? false : true} onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
           </div>
         </div>
       </form>

@@ -7,10 +7,11 @@ interface SearchResultsProps {
   seeRecipe: (uri: string) => void,
   healthLabels: string[],
   applyFilter: (filter: string) => void,
-  filterBy: string
+  filterBy: string,
+  error: string
 }
 
-const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy}: SearchResultsProps) => {
+const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy, error}: SearchResultsProps) => {
   let recipeCards;
   let filteredRecipes = recipes;
   
@@ -37,9 +38,11 @@ const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy}
       )
   });
   
+  
   return (
     <section className="search-results">
-      {recipeCards.length && 
+      {!!error.length && <div className='error'>{error}</div>}
+      {!!recipeCards.length && 
         <div>
           <FilterMenu applyFilter={applyFilter} healthLabels={healthLabels}/>
           <div className='recipe-cards'>
