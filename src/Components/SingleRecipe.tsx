@@ -5,7 +5,8 @@ import apiCalls from '../apiCalls';
 interface SingleRecipeProps {
   backToSearchResults: () => void,
   uri: string,
-  recipeId: string
+  recipeId: string,
+  seeRecipe: (uri: string) => void
 }
 
 interface SingleRecipeState extends RecipeInterface {
@@ -42,7 +43,11 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
       .catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }));
   }
 
-  componentDidMount = () => this.getRecipe(this.props.uri)
+  componentDidMount = async () => {
+    await this.props.seeRecipe(this.props.recipeId)
+    console.log(this.props.recipeId)
+    this.getRecipe(this.props.recipeId)
+  }
 
   render() {
     let dietLabels = this.state.dietLabels.join(', ');

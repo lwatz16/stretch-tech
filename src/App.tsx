@@ -79,9 +79,8 @@ class App extends Component {
     this.setState({ filterBy: filter})
   }
 
-  seeRecipe = async (uri: string) => {
-    await this.setState({ singleRecipeView: uri })
-    apiCalls.fetchSingleRecipe(uri);
+  seeRecipe = (uri: string) => {
+    this.setState({ singleRecipeView: uri })
   }
 
   backToSearchResults = () => {
@@ -116,7 +115,7 @@ class App extends Component {
           }/>
           <Route path="/recipe/:recipeId" render={({ match }) => {
             return (
-              <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} recipeId={match.params.recipeId}/>
+              <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} recipeId={match.params.recipeId} seeRecipe={this.seeRecipe} />
             )
           }}/>
 
