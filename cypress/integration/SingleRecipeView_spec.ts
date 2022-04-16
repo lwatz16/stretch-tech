@@ -2,7 +2,7 @@ describe('SingleRecipeView', () => {
   const appId = Cypress.env('appId');
   const appKey = Cypress.env('appKey');
   
-  beforeEach = () => {
+  beforeEach(() => {
     cy.visit(Cypress.env('url'))
 
     cy.intercept(
@@ -12,11 +12,11 @@ describe('SingleRecipeView', () => {
 
     cy.intercept(
       `https://api.edamam.com/api/recipes/v2/be262659c04aed267fd34c2b0606ed6e?type=public&app_id=${appId}&app_key=${appKey}`, {
-      fixture: 'search-results.json'
+      fixture: 'single-recipe.json'
     }).as('getSingleRecipe')
 
       
-  }
+  })
 
   it('should be able to enter ingredients to find recipes, and be able to click a button for more details', () => {
     cy.get('.inputs-wrapper input')
@@ -29,7 +29,7 @@ describe('SingleRecipeView', () => {
       // .select('Dairy-Free')
       .get('.recipe-card:first button')
       .click()
-      cy.get('.single-recipe-wrapper h2').should('contain', 'Chicken Vesuvio')
+      .get('.single-recipe-wrapper h2').should('contain', 'Blueberry Almond Baked Salmon')
 
     
   });
