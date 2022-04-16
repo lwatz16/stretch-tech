@@ -108,7 +108,7 @@ class App extends Component {
           }/>
           <Route path="/recipe/:recipeId" render={({ match }) => {
             return (
-              <SingleRecipe backToSearchResults={this.backToSearchResults} recipeId={match.params.recipeId} />
+              <SingleRecipe currentIngredients={this.state.currentIngredients} backToSearchResults={this.backToSearchResults} recipeId={match.params.recipeId} />
             )
           }}/>
 
