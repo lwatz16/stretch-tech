@@ -27,7 +27,6 @@ class Form extends Component<Props, State> {
   }
 
   getRecipes = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
     this.props.searchForRecipes(this.state.ingredients);
     this.clearIngredientField();
     this.clearSearchIngredients();
@@ -70,7 +69,7 @@ class Form extends Component<Props, State> {
           <input type='text' placeholder='example: chicken' value={this.state.ingredientToAdd} name="ingredient-field" onChange={(e) => this.updateForm(e)} />
           <div className="form-buttons">
             <button type='button' aria-label='Add New Search Field' className='add-input-btn' onClick={(e) => this.addIngredient(e)}>Add Ingredient</button>
-            <Link to={`/?ingredients=${queryString}`}>
+            <Link to={`search/?ingredients=${queryString}`}>
               <button className='search-btn' disabled={this.state.ingredients.length ? false : true} onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
             </Link>
           </div>

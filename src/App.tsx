@@ -89,7 +89,8 @@ class App extends Component {
           <Route exact path="/" render={() => <Form searchForRecipes={this.searchForRecipes} />}/>
           {/* !this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />*/} 
           <Route path="/?ingredients=:query" render={({ match }) => {
-            return (
+           console.log(match.params)
+           return (
               <SearchResults 
                 applyFilter={this.applyFilter} 
                 filterBy={this.state.filterBy} 
