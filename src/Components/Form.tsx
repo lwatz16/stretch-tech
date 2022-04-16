@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 interface Props {
   searchForRecipes: (ingredient: string[]) => void;
   loadCurrentIngredients: (ingredients: string[]) => void;
-  getTheDamnRecipes: () => void;
 }
 
 interface State {
@@ -28,9 +27,8 @@ class Form extends Component<Props, State> {
     }
   }
 
-  getRecipes = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  getRecipes = () => {
     this.props.loadCurrentIngredients(this.state.ingredients)
-    this.props.getTheDamnRecipes();
     this.clearIngredientField();
     this.clearSearchIngredients();
   }
@@ -73,7 +71,7 @@ class Form extends Component<Props, State> {
           <div className="form-buttons">
             <button type='button' aria-label='Add New Search Field' className='add-input-btn' onClick={(e) => this.addIngredient(e)}>Add Ingredient</button>
             <Link to={`search/?ingredients=${queryString}`}>
-              <button className='search-btn' disabled={this.state.ingredients.length ? false : true} onClick={(e) => this.getRecipes(e)}>Find Recipes</button>
+              <button className='search-btn' disabled={this.state.ingredients.length ? false : true} onClick={() => this.getRecipes()}>Find Recipes</button>
             </Link>
           </div>
         </div>

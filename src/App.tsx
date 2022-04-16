@@ -58,11 +58,8 @@ class App extends Component {
     }).catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }))
   }
 
-  loadCurrentIngredients = (ingredients: string[]) => {
-    this.setState({ currentIngredients: ingredients })
-  }
-
-  getTheDamnRecipes = () => {
+  loadCurrentIngredients = async (ingredients: string[]) => {
+    await this.setState({ currentIngredients: ingredients })
     this.searchForRecipes(this.state.currentIngredients)
   }
 
@@ -96,12 +93,12 @@ class App extends Component {
         <img className="background-image" src="https://images.unsplash.com/photo-1543352634-99a5d50ae78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Overhead view of an aesthetically pleasing table-spread.  Mmmm smell the spices wafting off of the perfectly prepaired sweet potatos."/>
         <Header />
         <main>
-          <Route exact path="/" render={() => <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} getTheDamnRecipes={this.getTheDamnRecipes} />}/>
+          <Route exact path="/" render={() => <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} />}/>
           {/* !this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />*/} 
           <Route path="/:query" render={({ match }) => {
            return (
               <div>
-                <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} getTheDamnRecipes={this.getTheDamnRecipes} />
+                <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} />
                 <SearchResults 
                   applyFilter={this.applyFilter} 
                   filterBy={this.state.filterBy} 
