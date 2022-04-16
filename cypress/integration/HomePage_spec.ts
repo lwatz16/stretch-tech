@@ -1,11 +1,9 @@
-// const appId = process.env.REACT_APP_EDAMAN_API_ID
-// const appKey = process.env.REACT_APP_EDAMAN_API_KEY
-
-// console.log(appId)
-
 describe('HomePage', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/')
+    // cy.visit('http://localhost:3000/')
+
+    cy.visit(Cypress.env('url'))
+
     // cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
     //   fixture: 'search-results.json'
   })
@@ -23,7 +21,7 @@ describe('HomePage', () => {
       .and('contain', 'https://images.unsplash.com/photo-1543352634-99a5d50ae78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80')
   })
 
-  it.only('should see a form that contains one input, an add ingredient button, a search button, and clear ingredients button', () => {
+  it('should see a form that contains one input, an add ingredient button, a search button, and clear ingredients button', () => {
     cy.get('form')
       .contains('What ingredients would you like to use?')
 
@@ -202,11 +200,11 @@ describe('HomePage', () => {
       .should('have.attr', 'disabled')
   })
 
-  it.only('should display an error message on the search results container instead of recipes when the network request fails', () => {
+  // it.skip('should display an error message on the search results container when the network request fails', () => {
 
-  })
+  // })
 
-  // it('should update the URL path to include my query parameters when I click on Find Recipes (E.g. localhost:3000/?ingredients=chicken&cheese***)', () => {
+  // it.skip('should update the URL path to include my query parameters when I click on Find Recipes', () => {
 
   // })
 
