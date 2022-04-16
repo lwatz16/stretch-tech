@@ -4,7 +4,8 @@ import apiCalls from '../apiCalls';
 
 interface SingleRecipeProps {
   backToSearchResults: () => void,
-  uri: string
+  uri: string,
+  recipeId: string
 }
 
 interface SingleRecipeState extends RecipeInterface {

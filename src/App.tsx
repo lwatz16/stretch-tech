@@ -79,8 +79,9 @@ class App extends Component {
     this.setState({ filterBy: filter})
   }
 
-  seeRecipe = (uri: string) => {
-    this.setState({ singleRecipeView: uri });
+  seeRecipe = async (uri: string) => {
+    await this.setState({ singleRecipeView: uri })
+    apiCalls.fetchSingleRecipe(uri);
   }
 
   backToSearchResults = () => {
@@ -107,23 +108,19 @@ class App extends Component {
                   recipes={this.state.recipes} 
                   seeRecipe={this.seeRecipe} 
                   error={this.state.error}
-                 query={match.params.query}
-                 searchForRecipes={this.searchForRecipes}
+                  query={match.params.query}
+                  searchForRecipes={this.searchForRecipes}
                 />
               </div>
             )}
           }/>
-          {/*!this.state.singleRecipeView && (
-            <SearchResults 
-              applyFilter={this.applyFilter} 
-              filterBy={this.state.filterBy} 
-              healthLabels={this.state.healthLabels} 
-              recipes={this.state.recipes} 
-              seeRecipe={this.seeRecipe} 
-              error={this.state.error}
-            />
-          )*/}
-          {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} />}
+          <Route path="/recipe/:recipeId" render={({ match }) => {
+            return (
+              <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} recipeId={match.params.recipeId}/>
+            )
+          }}/>
+
+          {/* {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} />} */}
         </main>
       </div>
     );
