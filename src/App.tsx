@@ -4,6 +4,7 @@ import Form from './Components/Form';
 import SearchResults from './Components/SearchResults';
 import SingleRecipe from './Components/SingleRecipe';
 import apiCalls from './apiCalls';
+import { Route } from 'react-router-dom';
 import './Css/styles.css';
 
 interface RecipeInterface {
@@ -85,8 +86,21 @@ class App extends Component {
         <img className="background-image" src="https://images.unsplash.com/photo-1543352634-99a5d50ae78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Overhead view of an aesthetically pleasing table-spread.  Mmmm smell the spices wafting off of the perfectly prepaired sweet potatos."/>
         <Header />
         <main>
-          {!this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />}
-          {!this.state.singleRecipeView && (
+          <Route exact path="/" render={() => <Form searchForRecipes={this.searchForRecipes} />}/>
+          {/* !this.state.singleRecipeView && <Form searchForRecipes={this.searchForRecipes} />*/} 
+          <Route path="/:query" render={({ match }) => {
+            return (
+              <SearchResults 
+                applyFilter={this.applyFilter} 
+                filterBy={this.state.filterBy} 
+                healthLabels={this.state.healthLabels} 
+                recipes={this.state.recipes} 
+                seeRecipe={this.seeRecipe} 
+                error={this.state.error}
+              />
+            )}
+          }/>
+          {/*!this.state.singleRecipeView && (
             <SearchResults 
               applyFilter={this.applyFilter} 
               filterBy={this.state.filterBy} 
@@ -95,7 +109,7 @@ class App extends Component {
               seeRecipe={this.seeRecipe} 
               error={this.state.error}
             />
-          )}
+          )*/}
           {this.state.singleRecipeView && <SingleRecipe backToSearchResults={this.backToSearchResults} uri={this.state.singleRecipeView} />}
         </main>
       </div>
@@ -106,3 +120,5 @@ class App extends Component {
 
 export default App;
 export type {RecipeInterface};
+
+
