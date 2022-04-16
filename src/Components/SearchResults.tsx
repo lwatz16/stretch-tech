@@ -1,17 +1,19 @@
 import type {RecipeInterface} from '../App';
+import { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
 import FilterMenu from './FilterMenu';
 
 interface SearchResultsProps {
   recipes: RecipeInterface[],
-  seeRecipe: (uri: string) => void,
   healthLabels: string[],
   applyFilter: (filter: string) => void,
   filterBy: string,
-  error: string
+  error: string,
+  query: string,
+  searchForRecipes: (ingredients: string[]) => void
 }
 
-const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy, error}: SearchResultsProps) => {
+const SearchResults = ({ recipes, healthLabels, applyFilter, filterBy, error, query, searchForRecipes}: SearchResultsProps) => {
   let recipeCards;
   let filteredRecipes = recipes;
   
@@ -33,11 +35,14 @@ const SearchResults = ({recipes, seeRecipe, healthLabels, applyFilter, filterBy,
         calories={recipe.calories}
         mealType={recipe.mealType}
         cuisineType={recipe.cuisineType}
-        seeRecipe={seeRecipe}
       />
       )
   });
-  
+
+  useEffect(() => {
+    let search = query.split('%20');
+    searchForRecipes(search);
+  }, [])
   
   return (
     <section className="search-results">

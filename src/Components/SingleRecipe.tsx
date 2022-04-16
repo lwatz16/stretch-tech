@@ -1,10 +1,12 @@
 import { Component } from 'react';
 import type { RecipeInterface } from '../App';
 import apiCalls from '../apiCalls';
+import { Link } from 'react-router-dom';
 
 interface SingleRecipeProps {
   backToSearchResults: () => void,
-  uri: string
+  recipeId: string,
+  currentIngredients: string[]
 }
 
 interface SingleRecipeState extends RecipeInterface {
@@ -41,7 +43,9 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
       .catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }));
   }
 
-  componentDidMount = () => this.getRecipe(this.props.uri)
+  componentDidMount = () => {
+    this.getRecipe(this.props.recipeId)
+  }
 
   render() {
     let dietLabels = this.state.dietLabels.join(', ');
@@ -49,10 +53,20 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
     let mealType = this.state.mealType.join(', ');
     let cuisineType = this.state.cuisineType.join(', ');
     let ingredientsList = this.state.ingredientLines.map((ingredient, index) => <p key={index}>{ingredient}</p>)
+    let nextPath = this.props.currentIngredients.join('%20');
 
     return (
       <section className='single-recipe-wrapper'>
-        <button type='button' onClick={this.props.backToSearchResults}>Back to Results</button>
+        {!this.props.currentIngredients.length &&
+          <Link to={`/`}>
+            <button type='button'>Back to Home</button>
+          </Link> 
+        }
+        {!!this.props.currentIngredients.length &&
+          <Link to={`/ingredients/${nextPath}`}>
+            <button type='button'>Back to Results</button>
+          </Link> 
+        }
         <div className='error'>{this.state.error}</div>
         {!!this.state.uri.length && (
           <div>
