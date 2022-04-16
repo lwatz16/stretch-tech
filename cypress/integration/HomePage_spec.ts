@@ -1,16 +1,30 @@
 describe('HomePage', () => {
   const appId = Cypress.env('appId')
   const appKey = Cypress.env('appKey')
-  
+
   beforeEach(() => {
     cy.visit(Cypress.env('url'))
-
-    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
-      fixture: 'search-results.json'
-    }).as('getRecipes')
-
   })
 
+  it('should display an error message on the search results container when the network request fails', () => {
+    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+      forceNetworkError: true
+    }).as('getNetworkFailure')
+
+    cy.get('input')
+      .type('chicken')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+
+    cy.get('.error')
+      .should('be.visible')
+      .and('contain', 'Something went wrong, please try again later.')
+  })
+  
   it('should display a header, background image and form', () => {
     cy.get('form')
       .should('be.visible')
@@ -79,7 +93,15 @@ describe('HomePage', () => {
       .contains('Ingredient list: fish, avocado')
   })
 
-  it.only('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
+  beforeEach(() => {
+    cy.visit(Cypress.env('url'))
+
+    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+      fixture: 'search-results.json'
+    }).as('getRecipes')
+  })
+
+  it('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
     cy.get('input')
       .type('chicken')
 
@@ -107,7 +129,7 @@ describe('HomePage', () => {
       .contains('View')
   })
 
-  it.skip('should display a message when there are no recipes that match the search criteria (different from a network request failure)', () => {
+  it('should display a message when there are no recipes that match the search criteria (different from a network request failure)', () => {
     cy.get('input')
       .type('beef')
 
@@ -133,7 +155,7 @@ describe('HomePage', () => {
       .contains('No search results found. Please try a different combination.')
   })
 
-  it.skip('should display a dropdown menu with filtering options when my search results are first found', () => {
+  it('should display a dropdown menu with filtering options when my search results are first found', () => {
     cy.get('input')
       .type('chicken')
 
@@ -155,7 +177,7 @@ describe('HomePage', () => {
       .should('have.value', '')
   })
 
-  it.skip('should be able to click on the filter dropdown menu and select from a list of options', () => {
+  it('should be able to click on the filter dropdown menu and select from a list of options', () => {
     cy.get('input')
       .type('chicken')
 
@@ -167,7 +189,7 @@ describe('HomePage', () => {
 
     cy.get('select')
       .children('option')
-      .should('have.length', 29)
+      .should('have.length', 31)
 
     cy.get('select')
       .select('Show all Recipes')
@@ -178,7 +200,7 @@ describe('HomePage', () => {
       .should('have.value', 'Keto-Friendly')
   })
 
-  it.skip('should update the search results to reflect the new filter selected from the dropdown menu', () => {
+  it('should update the search results to reflect the new filter selected from the dropdown menu', () => {
     cy.get('input')
       .type('chicken')
 
@@ -193,17 +215,13 @@ describe('HomePage', () => {
 
     cy.get('.recipe-cards')
       .children('article')
-      .should('have.length', 6)
+      .should('have.length', 1)
   })
 
-  it.skip('should not be able to click search/find recipes until there is at least one ingredient entered.', () => {
+  it('should not be able to click search/find recipes until there is at least one ingredient entered.', () => {
     cy.get('.search-btn')
-      .should('have.attr', 'disabled')
+      .should('be.disabled')
   })
-
-  // it.skip('should display an error message on the search results container when the network request fails', () => {
-
-  // })
 
   // it.skip('should update the URL path to include my query parameters when I click on Find Recipes', () => {
 
