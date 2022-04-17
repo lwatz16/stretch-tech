@@ -58,12 +58,12 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
     return (
       <section className='single-recipe-wrapper'>
         {!this.props.currentIngredients.length &&
-          <Link to={`/`}>
+          <Link to={`/`} className='back-button'>
             <button type='button'>Back to Home</button>
           </Link> 
         }
         {!!this.props.currentIngredients.length &&
-          <Link to={`/ingredients/${nextPath}`}>
+          <Link to={`/ingredients/${nextPath}`} className='back-button'>
             <button type='button'>Back to Results</button>
           </Link> 
         }
