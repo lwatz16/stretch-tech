@@ -16,6 +16,11 @@ describe('HomePage', () => {
     cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chick&app_id=${appId}&app_key=${appKey}`, {
       forceNetworkError: true
     }).as('getNetworkFailure')
+
+    cy.intercept(
+      `https://api.edamam.com/api/recipes/v2/be262659c04aed267fd34c2b0606ed6e?type=public&app_id=${appId}&app_key=${appKey}`, {
+      fixture: 'single-recipe.json'
+    }).as('getSingleRecipe')
   })
 
   it('should display the base url when application first loads', () => {
@@ -91,7 +96,7 @@ describe('HomePage', () => {
       .contains('Ingredient list: fish, avocado')
   })
 
-  it('should show a loading component when I click Find Recipes', () => {
+  it('should show a loading component when I click Find Recipes and View button', () => {
     cy.get('input')
       .type('chicken')
 
@@ -99,6 +104,16 @@ describe('HomePage', () => {
       .click()
 
     cy.get('.search-btn')
+      .contains('Find Recipes')
+      .click()
+
+    cy.get('.loading')
+      .should('be.visible')
+
+    cy.get('.recipe-card')
+      .first()
+      .find('button')
+      .contains('View')
       .click()
 
     cy.get('.loading')
