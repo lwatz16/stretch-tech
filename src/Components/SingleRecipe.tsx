@@ -41,7 +41,6 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
   }
 
   getRecipe = (uri: string) => {
-    console.log('should true', this.state)
     apiCalls.fetchSingleRecipe(uri)
       .then(data => {
         this.setState({ 
@@ -59,11 +58,8 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
           error: '',
           isLoading: false
         })
-        console.log('should be false', this.state.isLoading)
       })
-      .catch(err => {
-        this.setState({ error: `Something went wrong, please try again later. ${err}.`, isLoading: false })
-      });
+      .catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.`, isLoading: false }));
   }
 
   componentDidMount = () => {
