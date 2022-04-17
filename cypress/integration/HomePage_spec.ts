@@ -13,7 +13,7 @@ describe('HomePage', () => {
       fixture: 'no-results.json'
     }).as('getNoResults')
 
-    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${appId}&app_key=${appKey}`, {
+    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2?type=public&q=chick&app_id=${appId}&app_key=${appKey}`, {
       forceNetworkError: true
     }).as('getNetworkFailure')
   })
@@ -37,7 +37,7 @@ describe('HomePage', () => {
 
     cy.get('input')
       .should('have.attr', 'placeholder')
-      .and('contain', 'example: chicken')
+      .and('contain', 'example: blueberries')
 
     cy.get('button')
       .first()
@@ -86,7 +86,7 @@ describe('HomePage', () => {
       .contains('Ingredient list: fish, avocado')
   })
 
-  it.skip('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
+  it('should update the URL path to include my query parameters when I click on Find Recipes', () => {
     cy.get('input')
       .type('chicken')
 
@@ -95,6 +95,23 @@ describe('HomePage', () => {
 
     cy.get('.search-btn')
       .click()
+
+    cy.url()
+      .should('eq', Cypress.env('url') + 'ingredients/chicken')
+  })
+
+  it('should see a grid of images with recipe titles, calories, and button to see recipe details after I click on Find Recipes', () => {
+    cy.get('input')
+      .type('chicken')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+
+    cy.url()
+      .should('eq', Cypress.env('url') + 'ingredients/chicken')
 
     cy.get('.recipe-img')
       .should('have.attr', 'src')
@@ -140,7 +157,7 @@ describe('HomePage', () => {
       .contains('No search results found. Please try a different combination.')
   })
 
-  it.skip('should display a dropdown menu with filtering options when my search results are first found', () => {
+  it('should display a dropdown menu with filtering options when my search results are first found', () => {
     cy.get('input')
       .type('chicken')
 
@@ -162,7 +179,7 @@ describe('HomePage', () => {
       .should('have.value', '')
   })
 
-  it.skip('should be able to click on the filter dropdown menu and select from a list of options', () => {
+  it('should be able to click on the filter dropdown menu and select from a list of options', () => {
     cy.get('input')
       .type('chicken')
 
@@ -185,7 +202,7 @@ describe('HomePage', () => {
       .should('have.value', 'Keto-Friendly')
   })
 
-  it.skip('should update the search results to reflect the new filter selected from the dropdown menu', () => {
+  it('should update the search results to reflect the new filter selected from the dropdown menu', () => {
     cy.get('input')
       .type('chicken')
 
@@ -210,7 +227,7 @@ describe('HomePage', () => {
 
   it('should display an error message on the search results container when the network request fails', () => {
     cy.get('input')
-      .type('chicken')
+      .type('chick')
 
     cy.get('.add-input-btn')
       .click()
@@ -222,9 +239,4 @@ describe('HomePage', () => {
       .should('be.visible')
       .and('contain', 'Something went wrong, please try again later.')
   })
-
-  // it.skip('should update the URL path to include my query parameters when I click on Find Recipes', () => {
-
-  // })
-
 })
