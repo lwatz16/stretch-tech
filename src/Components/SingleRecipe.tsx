@@ -11,7 +11,8 @@ interface SingleRecipeProps {
 
 interface SingleRecipeState extends RecipeInterface {
   ingredientLines: string[],
-  error: string
+  error: string,
+  isLoading: boolean
 }
 
 class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
@@ -33,14 +34,35 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
       mealType: [],
       cuisineType: [],
       ingredientLines: [],
-      error: ''
+      error: '',
+      isLoading: true
     }
   }
 
   getRecipe = (uri: string) => {
+    console.log('should true', this.state)
     apiCalls.fetchSingleRecipe(uri)
-      .then(data => this.setState({ uri: data.recipe.uri, label: data.recipe.label, url: data.recipe.url, yield: data.recipe.yield, dietLabels: data.recipe.dietLabels, healthLabels: data.recipe.healthLabels, calories: data.recipe.calories, mealType: data.recipe.mealType, cuisineType: data.recipe.cuisineType, images: {REGULAR: {url: data.recipe.images.REGULAR.url}}, ingredientLines: data.recipe.ingredientLines, error: '' }))
-      .catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }));
+      .then(data => {
+        this.setState({ 
+          uri: data.recipe.uri, 
+          label: data.recipe.label, 
+          url: data.recipe.url, 
+          yield: data.recipe.yield, 
+          dietLabels: data.recipe.dietLabels, 
+          healthLabels: data.recipe.healthLabels, 
+          calories: data.recipe.calories, 
+          mealType: data.recipe.mealType, 
+          cuisineType: data.recipe.cuisineType, 
+          images: {REGULAR: {url: data.recipe.images.REGULAR.url}}, 
+          ingredientLines: data.recipe.ingredientLines, 
+          error: '',
+          isLoading: false
+        })
+        console.log('should be false', this.state.isLoading)
+      })
+      .catch(err => {
+        this.setState({ error: `Something went wrong, please try again later. ${err}.`, isLoading: false })
+      });
   }
 
   componentDidMount = () => {
