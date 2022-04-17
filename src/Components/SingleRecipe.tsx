@@ -78,7 +78,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
       <section className='single-recipe-wrapper'>
         {
           this.state.isLoading ? (
-            <ReactLoading className='loading' type='cylon' color='#EB7F02' height={667} width={375} />
+            <ReactLoading className='loading loading-on-single' type='cylon' color='#EB7F02' height={667} width={375} />
           ) : (
             <>
               {!this.props.currentIngredients.length &&

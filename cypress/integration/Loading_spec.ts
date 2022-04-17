@@ -26,7 +26,7 @@ describe('Loading', () => {
       .contains('Find Recipes')
       .click()
 
-    cy.get('.loading')
+    cy.get('.loading-on-search')
       .should('be.visible')
 
     cy.get('.recipe-card')
@@ -37,7 +37,7 @@ describe('Loading', () => {
 
     cy.wait('@getSingleRecipe').then(interception => {
       const response = interception.response.body.recipe;
-      cy.get('.loading')
+      cy.get('.loading-on-single')
         .should('be.visible')
       expect(response.calories).to.eq(184.9062325245606)
     })
@@ -71,7 +71,7 @@ describe('Loading', () => {
       .click()
 
     cy.wait('@getRecipes').then(() => {
-      cy.get('.loading')
+      cy.get('.loading-on-search')
         .should('be.visible')
     })
 
