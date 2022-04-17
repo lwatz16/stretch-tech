@@ -2,6 +2,7 @@ import type {RecipeInterface} from '../App';
 import { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
 import FilterMenu from './FilterMenu';
+import ReactLoading from 'react-loading';
 
 interface SearchResultsProps {
   recipes: RecipeInterface[],
@@ -10,10 +11,11 @@ interface SearchResultsProps {
   filterBy: string,
   error: string,
   query: string,
-  searchForRecipes: (ingredients: string[]) => void
+  searchForRecipes: (ingredients: string[]) => void,
+  isLoading: boolean,
 }
 
-const SearchResults = ({ recipes, healthLabels, applyFilter, filterBy, error, query, searchForRecipes}: SearchResultsProps) => {
+const SearchResults = ({ recipes, healthLabels, applyFilter, filterBy, error, query, searchForRecipes, isLoading }: SearchResultsProps) => {
   let recipeCards;
   let filteredRecipes = recipes;
   
@@ -46,14 +48,24 @@ const SearchResults = ({ recipes, healthLabels, applyFilter, filterBy, error, qu
   
   return (
     <section className="search-results">
-      {!!error.length && <div className='error'>{error}</div>}
-      {!!recipeCards.length && 
-        <div>
-          <FilterMenu applyFilter={applyFilter} healthLabels={healthLabels}/>
+      {
+        isLoading ? (
           <div className='recipe-cards'>
-            {recipeCards}
-          </div> 
-        </div>
+            <ReactLoading type="cylon" color="#EB7F02" height={667} width={375} />
+          </div>
+        ) : (
+          <>
+            {!!error.length && <div className='error'>{error}</div>}
+            {!!recipeCards.length && 
+              <div>
+                <FilterMenu applyFilter={applyFilter} healthLabels={healthLabels}/>
+                <div className='recipe-cards'>
+                  {recipeCards}
+                </div> 
+              </div>
+            }
+          </>
+        )
       }
     </section>
   )
