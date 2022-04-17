@@ -91,6 +91,20 @@ describe('HomePage', () => {
       .contains('Ingredient list: fish, avocado')
   })
 
+  it('should show a loading component when I click Find Recipes', () => {
+    cy.get('input')
+      .type('chicken')
+
+    cy.get('.add-input-btn')
+      .click()
+
+    cy.get('.search-btn')
+      .click()
+
+    cy.get('.loading')
+      .should('be.visible')
+  })
+
   it('should update the URL path to include my query parameters when I click on Find Recipes', () => {
     cy.get('input')
       .type('chicken')
