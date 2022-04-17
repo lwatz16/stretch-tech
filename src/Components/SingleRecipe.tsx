@@ -2,6 +2,7 @@ import { Component } from 'react';
 import type { RecipeInterface } from '../App';
 import apiCalls from '../apiCalls';
 import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 
 interface SingleRecipeProps {
   backToSearchResults: () => void,
@@ -79,32 +80,40 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
 
     return (
       <section className='single-recipe-wrapper'>
-        {!this.props.currentIngredients.length &&
-          <Link to={`/`}>
-            <button type='button'>Back to Home</button>
-          </Link> 
-        }
-        {!!this.props.currentIngredients.length &&
-          <Link to={`/ingredients/${nextPath}`}>
-            <button type='button'>Back to Results</button>
-          </Link> 
-        }
-        <div className='error'>{this.state.error}</div>
-        {!!this.state.uri.length && (
-          <div>
-            <img src={this.state.images.REGULAR.url} alt={this.state.label} />
-            <h2>{this.state.label}</h2>
-            <p>{this.state.yield} servings</p>
-            <p>{this.state.calories.toFixed(2)} cal</p>
-            <p>{dietLabels}</p>
-            <p>{healthLabels}</p>
-            <p>{mealType}</p>
-            <p>{cuisineType}</p>
-            <p>Ingredients: </p>
-            {ingredientsList}
-            <a href={this.state.url} target='_blank'><button>See Full Recipe</button></a>
-          </div>
-        )}
+        {
+          this.state.isLoading ? (
+            <ReactLoading type="cylon" color="#EB7F02" height={667} width={375} />
+          ) : (
+            <>
+              {!this.props.currentIngredients.length &&
+                <Link to={`/`}>
+                  <button type='button'>Back to Home</button>
+                </Link>
+              }
+              {!!this.props.currentIngredients.length &&
+                <Link to={`/ingredients/${nextPath}`}>
+                  <button type='button'>Back to Results</button>
+                </Link>
+              }
+              <div className='error'>{this.state.error}</div>
+              {!!this.state.uri.length && (
+                <div>
+                  <img src={this.state.images.REGULAR.url} alt={this.state.label} />
+                  <h2>{this.state.label}</h2>
+                  <p>{this.state.yield} servings</p>
+                  <p>{this.state.calories.toFixed(2)} cal</p>
+                  <p>{dietLabels}</p>
+                  <p>{healthLabels}</p>
+                  <p>{mealType}</p>
+                  <p>{cuisineType}</p>
+                  <p>Ingredients: </p>
+                  {ingredientsList}
+                  <a href={this.state.url} target='_blank'><button>See Full Recipe</button></a>
+                </div>
+              )}
+            </>
+          )
+        }   
       </section>
     )
   }
