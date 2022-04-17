@@ -57,7 +57,10 @@ class App extends Component {
         this.setState({ error: 'No search results found. Please try a different combination.' });
       }
       this.setState({ recipes: allRecipes, healthLabels: this.getHealthLabels(allRecipes) })
-    }).catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }))
+    }).catch(err => {
+      this.setState({ error: `Something went wrong, please try again later. ${err}.` })
+      this.setState({ isLoading: false })
+    })
   }
 
   loadCurrentIngredients = async (ingredients: string[]) => {
