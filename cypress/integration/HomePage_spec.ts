@@ -18,6 +18,11 @@ describe('HomePage', () => {
     }).as('getNetworkFailure')
   })
 
+  it('should display the base url when application first loads', () => {
+    cy.url()
+      .should('eq', Cypress.env('url'))
+  })
+
   it('should display a header, background image and form', () => {
     cy.get('form')
       .should('be.visible')
