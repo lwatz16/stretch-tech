@@ -50,7 +50,7 @@ const SearchResults = ({ recipes, healthLabels, applyFilter, filterBy, error, qu
     <section className="search-results">
       {
         isLoading ? (
-          <div className='recipe-cards'>
+          <div className='loading-container'>
             <ReactLoading className='loading loading-on-search' type='cylon' color='#EB7F02' height={667} width={375} />
           </div>
         ) : (

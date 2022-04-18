@@ -10,7 +10,7 @@ body {
 button {
   cursor: pointer;
   background-color: $primary-color;
-  color: #fff;
+  color: #000;
   border: 0;
   border-radius: 15px;
   height: 40px;
@@ -51,6 +51,7 @@ header h1 {
 main {
   box-sizing: border-box;
   width: 100%;
+  padding-bottom: 2em;
 }
 
 

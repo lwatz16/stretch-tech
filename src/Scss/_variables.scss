@@ -4,8 +4,11 @@ $breakpoints: (
   tablet: 650px,
   medium: 720px,
   large: 960px,
+  x-large: 1050px,
   wide: 1200px,
-  wider: 1500px
+  x-wide: 1350px,
+  wider: 1500px,
+  widest: 1650px
 );
 
 $primary-color: #EB7F02;

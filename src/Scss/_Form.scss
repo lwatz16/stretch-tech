@@ -42,20 +42,24 @@
         .clear-ingredients {
             height: 1.5em;
             margin-left: 1em;
-            background-color: #868686;
+            color: #fff;
+            background-color: #666;
             &:hover, &:focus {
-                background-color: scale-color(#868686, $lightness: -20%);
+                background-color: scale-color(#666, $lightness: -20%);
             }
         }
     }
+    .ingredient-field {
+        margin-left: 0.5em;
+    }
 }
 
-.add-input-btn {
+.add-ingredient-btn {
     background-color: #fff;
     color: $primary-color;
     border: 2px solid $primary-color;
     &:hover, &:focus {
-        background-color: scale-color(#868686, $lightness: -30%);
-        border-color: scale-color(#868686, $lightness: -50%);
+        background-color: scale-color($primary-color, $lightness: -30%);
+        border-color: scale-color($primary-color, $lightness: -30%);
     }
 }
