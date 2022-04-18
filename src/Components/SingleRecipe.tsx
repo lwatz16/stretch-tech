@@ -76,6 +76,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
 
     return (
       <section className='single-recipe-wrapper'>
+
         {
           this.state.isLoading ? (
             <ReactLoading className='loading loading-on-single' type='cylon' color='#EB7F02' height={667} width={375} />
@@ -83,11 +84,11 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
             <>
               {!this.props.currentIngredients.length &&
                 <Link to={`/`}>
-                  <button type='button'>Back to Home</button>
+                  <button type='button' className='back-button'>Back to Home</button>
                 </Link>
               }
               {!!this.props.currentIngredients.length &&
-                <Link to={`/ingredients/${nextPath}`}>
+                <Link to={`/ingredients/${nextPath}`} className='back-button'>
                   <button type='button'>Back to Results</button>
                 </Link>
               }
