@@ -64,10 +64,13 @@ class Form extends Component<Props, State> {
         <h2>What ingredients would you like to use?</h2>
         <div className="inputs-wrapper">
           <div className='ingredients-filter'>
-            <p className='ingredients-to-search'>Ingredient list: {ingredients}</p>
+            <p className='ingredients-to-search'>Current search: {ingredients}</p>
             <button className='clear-ingredients' type='button' onClick={this.clearSearchIngredients}>Clear Ingredients</button>
           </div>
-          <input type='text' placeholder='example: blueberries' value={this.state.ingredientToAdd} name="ingredient-field" onChange={(e) => this.updateForm(e)} />
+          <div>
+            <label htmlFor='ingredient-field'>Enter ingredients:</label>
+            <input className='ingredient-field' type='text' placeholder='example: blueberries' value={this.state.ingredientToAdd} name="ingredient-field" id='ingredient-field' onChange={(e) => this.updateForm(e)} />
+          </div>
           <div className="form-buttons">
             <button type='button' className='add-ingredient-btn' onClick={(e) => this.addIngredient(e)}>Add Ingredient</button>
             <Link to={`/ingredients/${queryString}`}>

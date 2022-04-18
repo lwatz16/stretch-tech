@@ -43,11 +43,14 @@
             height: 1.5em;
             margin-left: 1em;
             color: #fff;
-            background-color: #868686;
+            background-color: #666;
             &:hover, &:focus {
-                background-color: scale-color(#868686, $lightness: -20%);
+                background-color: scale-color(#666, $lightness: -20%);
             }
         }
+    }
+    .ingredient-field {
+        margin-left: 0.5em;
     }
 }
 
