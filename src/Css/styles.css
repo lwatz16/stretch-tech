@@ -128,17 +128,17 @@ main {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 1050px) {
   .search-results .recipe-cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1350px) {
   .search-results .recipe-cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
-@media (min-width: 1500px) {
+@media (min-width: 1650px) {
   .search-results .recipe-cards {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -188,4 +188,12 @@ main {
 }
 .single-recipe-wrapper img {
   border-radius: 15px;
+}
+
+.filters {
+  background-color: white;
+  border-radius: 30px;
+  padding: 1em;
+  display: table;
+  margin: 0 auto 2em;
 }
