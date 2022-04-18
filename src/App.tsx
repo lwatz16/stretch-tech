@@ -29,7 +29,8 @@ interface StateInterface {
   error: string,
   healthLabels: string[],
   filterBy: string,
-  currentIngredients: string[]
+  currentIngredients: string[],
+  isLoading: boolean,
 } 
 
 interface IndividualRecipe {
@@ -42,18 +43,20 @@ class App extends Component {
     healthLabels: [],
     error: '',
     filterBy: '',
-    currentIngredients: []
+    currentIngredients: [],
+    isLoading: false
   }
 
   searchForRecipes = (ingredients: string[]) => {
+    this.setState({ isLoading: true })
     apiCalls.searchRecipes(ingredients).then(data => {
       let allRecipes = data.hits.map((recipe: IndividualRecipe) => recipe.recipe)
-      this.setState({ error: '' });
+      this.setState({ error: '', isLoading: false });
       if (!allRecipes.length) {
         this.setState({ error: 'No search results found. Please try a different combination.' });
       }
       this.setState({ recipes: allRecipes, healthLabels: this.getHealthLabels(allRecipes) })
-    }).catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.` }))
+    }).catch(err => this.setState({ error: `Something went wrong, please try again later. ${err}.`, isLoading: false }))
   }
 
   loadCurrentIngredients = async (ingredients: string[]) => {
@@ -102,6 +105,7 @@ class App extends Component {
                     error={this.state.error}
                     query={match.params.query}
                     searchForRecipes={this.searchForRecipes}
+                    isLoading={this.state.isLoading}
                   />
                 </div>
               )
