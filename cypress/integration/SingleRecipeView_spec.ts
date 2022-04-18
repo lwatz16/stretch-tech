@@ -62,8 +62,16 @@ describe('SingleRecipeView', () => {
       .children('.ingredient-form').contains('What ingredients would you like to use?')
   });
 
-  it.skip('should display a message to the user if there is a network error', () => {
+  it('should display a message to the user if there is a network error', () => {
+    cy.intercept('GET', `https://api.edamam.com/api/recipes/v2/205022c0a4e99c4a6aefd3334175a079?type=public&app_id=${appId}&app_key=${appKey}`, {
+      forceNetworkError: true
+    }).as('singleRecipeNetworkError')
 
+    cy.visit(Cypress.env('url') + 'recipe/205022c0a4e99c4a6aefd3334175a079')
+    cy.wait('@singleRecipeNetworkError')
+
+    cy.get('section.single-recipe-wrapper')
+      .contains('Something went wrong, please try again later.')
   });
 
 });
