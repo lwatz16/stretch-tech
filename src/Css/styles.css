@@ -8,7 +8,7 @@ body {
 button {
   cursor: pointer;
   background-color: #EB7F02;
-  color: #fff;
+  color: #000;
   border: 0;
   border-radius: 15px;
   height: 40px;
@@ -96,6 +96,7 @@ main {
 .ingredient-form .ingredients-filter .clear-ingredients {
   height: 1.5em;
   margin-left: 1em;
+  color: #fff;
   background-color: #868686;
 }
 .ingredient-form .ingredients-filter .clear-ingredients:hover, .ingredient-form .ingredients-filter .clear-ingredients:focus {

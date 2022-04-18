@@ -42,6 +42,7 @@
         .clear-ingredients {
             height: 1.5em;
             margin-left: 1em;
+            color: #fff;
             background-color: #868686;
             &:hover, &:focus {
                 background-color: scale-color(#868686, $lightness: -20%);
