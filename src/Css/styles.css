@@ -8,7 +8,7 @@ body {
 button {
   cursor: pointer;
   background-color: #EB7F02;
-  color: #000;
+  color: #fff;
   border: 0;
   border-radius: 15px;
   height: 40px;
@@ -189,11 +189,13 @@ main {
   margin-bottom: 2em;
   padding-bottom: 2em;
   margin: auto;
-}
-.single-recipe-wrapper .back-button {
   position: relative;
+}
+.single-recipe-wrapper > a {
+  position: absolute;
   left: 1em;
   top: 1em;
+  z-index: 10;
 }
 .single-recipe-wrapper img {
   border-radius: 15px;
@@ -203,6 +205,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 1em;
 }
 .single-recipe-wrapper .recipe-details {
   display: flex;
