@@ -50,7 +50,6 @@ describe('Router Navigation', () => {
   it('should no longer display recipe details when you click on the back button to go back to recipe list', () => {
     cy.get('.search-btn').click()
       .get('.recipe-card:first button').click()
-      // cy.wait('@getSingleRecipe')
       .get('section.single-recipe-wrapper .back-button').contains('Back to Results')
       .click()
       .get('main').should('not.contain', '.single-recipe-wrapper')
