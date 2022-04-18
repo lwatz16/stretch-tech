@@ -189,3 +189,10 @@ main {
 .single-recipe-wrapper img {
   border-radius: 15px;
 }
+.single-recipe-wrapper .recipe-details {
+  display: flex;
+  justify-content: space-evenly;
+}
+.single-recipe-wrapper span {
+  font-weight: bold;
+}
