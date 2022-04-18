@@ -6,4 +6,13 @@
   img {
     border-radius: 15px;
   }
+
+  .recipe-details {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  span {
+    font-weight: bold;
+  }
 }
