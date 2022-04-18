@@ -187,6 +187,7 @@ main {
   border-radius: 30px;
   margin-bottom: 2em;
   padding-bottom: 2em;
+  margin: auto;
 }
 .single-recipe-wrapper .back-button {
   position: relative;
