@@ -59,8 +59,6 @@ describe('HomePage', () => {
 
     cy.get('.add-input-btn')
       .contains('Add Ingredient')
-      .should('have.attr', 'aria-label')
-      .and('match', /Add New Search Field/)
   })
 
   it('should contain a list of ingredients that I am searching for. (On page load, there are none.)', () => {
