@@ -5,11 +5,12 @@
   margin-bottom: 2em;
   padding-bottom: 2em;
   margin: auto;
-
-  .back-button {
-    position: relative;
+  position: relative;
+  > a {
+    position: absolute;
     left: 1em;
     top: 1em;
+    z-index: 10;
   }
 
   img {
@@ -21,6 +22,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 1em;
   }
 
   .recipe-details {
