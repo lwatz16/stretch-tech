@@ -88,12 +88,13 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
               }
               {!!this.props.currentIngredients.length &&
                 <Link to={`/ingredients/${nextPath}`} className='back-button'>
-                  <button type='button'>Back to Results</button>
+                  <button type='button' className='back-button'>Back to Results</button>
                 </Link>
               }
               <div className='error'>{this.state.error}</div>
               {!!this.state.uri.length && (
-                <div>
+                <div className='button-container'>
+                <div className='full-recipe'>
                   <img src={this.state.images.REGULAR.url} alt={this.state.label} />
                   <h2>{this.state.label}</h2>
                   <div className='recipe-details'>
@@ -112,7 +113,8 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
                       </ul>
                     </div>
                   </div>
-                  <a href={this.state.url} target='_blank'><button>See Full Recipe</button></a>
+                </div>
+                    <a href={this.state.url} target='_blank' className='see-full-recipe-button'><button >See Full Recipe</button></a>
                 </div>
               )}
             </>
