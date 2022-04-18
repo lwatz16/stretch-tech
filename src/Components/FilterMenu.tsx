@@ -28,7 +28,7 @@ class FilterMenu extends Component<FilterMenuProps, FilterMenuState> {
     })
     
     return (
-      <div>
+      <div className='filters'>
         <label htmlFor="filter"> Filter: </label>
           <select name="filter" value={this.state.filter} onChange={(e) => this.updateFilter(e)}>
             <option value=""> Show all Recipes </option>

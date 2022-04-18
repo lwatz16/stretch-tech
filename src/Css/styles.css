@@ -128,17 +128,17 @@ main {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 1050px) {
   .search-results .recipe-cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1350px) {
   .search-results .recipe-cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
-@media (min-width: 1500px) {
+@media (min-width: 1650px) {
   .search-results .recipe-cards {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -217,4 +217,23 @@ main {
   position: absolute;
   margin-right: 1em;
   right: 1em;
+}
+
+.filters {
+  background-color: white;
+  border-radius: 30px;
+  padding: 1em;
+  display: table;
+  margin: 0 auto 2em;
+}
+
+.loading-container, .loading {
+  margin: auto;
+  display: block;
+  width: 100%;
+}
+
+.loading-container {
+  background-color: white;
+  border-radius: 30px;
 }
