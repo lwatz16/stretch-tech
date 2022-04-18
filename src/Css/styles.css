@@ -221,6 +221,10 @@ main {
 .single-recipe-wrapper span {
   font-weight: bold;
 }
+.single-recipe-wrapper .servings-and-labels,
+.single-recipe-wrapper .ingredients-list {
+  max-width: 400px;
+}
 .single-recipe-wrapper .button-container {
   position: relative;
   padding-bottom: 3em;

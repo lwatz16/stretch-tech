@@ -34,6 +34,11 @@
     font-weight: bold;
   }
 
+  .servings-and-labels,
+  .ingredients-list {
+    max-width: 400px;
+  }
+
   .button-container {
     position: relative;
     padding-bottom: 3em;

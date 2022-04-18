@@ -93,7 +93,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} />} />
             <Route path="/ingredients/:query" render={({ match }) => {
-              console.log(match.params)
               return (
                 <div>
                   <Form loadCurrentIngredients={this.loadCurrentIngredients} searchForRecipes={this.searchForRecipes} />
