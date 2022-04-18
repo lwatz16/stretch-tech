@@ -103,14 +103,14 @@ main {
   background-color: #6b6b6b;
 }
 
-.add-input-btn {
+.add-ingredient-btn {
   background-color: #fff;
   color: #EB7F02;
   border: 2px solid #EB7F02;
 }
-.add-input-btn:hover, .add-input-btn:focus {
-  background-color: #5e5e5e;
-  border-color: #434343;
+.add-ingredient-btn:hover, .add-ingredient-btn:focus {
+  background-color: #a55901;
+  border-color: #a55901;
 }
 
 .search-results {

@@ -51,12 +51,12 @@
     }
 }
 
-.add-input-btn {
+.add-ingredient-btn {
     background-color: #fff;
     color: $primary-color;
     border: 2px solid $primary-color;
     &:hover, &:focus {
-        background-color: scale-color(#868686, $lightness: -30%);
-        border-color: scale-color(#868686, $lightness: -50%);
+        background-color: scale-color($primary-color, $lightness: -30%);
+        border-color: scale-color($primary-color, $lightness: -30%);
     }
 }
