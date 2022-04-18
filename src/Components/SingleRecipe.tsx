@@ -71,7 +71,7 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
     let healthLabels = this.state.dietLabels.join(', ');
     let mealType = this.state.mealType.join(', ');
     let cuisineType = this.state.cuisineType.join(', ');
-    let ingredientsList = this.state.ingredientLines.map((ingredient, index) => <p key={index}>{ingredient}</p>)
+    let ingredientsList = this.state.ingredientLines.map((ingredient, index) => <li key={index}>{ingredient}</li>)
     let nextPath = this.props.currentIngredients.join('%20');
 
     return (
@@ -104,7 +104,9 @@ class SingleRecipe extends Component<SingleRecipeProps, SingleRecipeState> {
                   <p>{mealType}</p>
                   <p>{cuisineType}</p>
                   <p>Ingredients: </p>
+                  <ul>
                   {ingredientsList}
+                  </ul>
                   <a href={this.state.url} target='_blank'><button>See Full Recipe</button></a>
                 </div>
               )}

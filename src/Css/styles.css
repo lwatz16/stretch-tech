@@ -184,4 +184,8 @@ main {
 .single-recipe-wrapper {
   background-color: #fff;
   max-width: 1000px;
+  border-radius: 30px;
+}
+.single-recipe-wrapper img {
+  border-radius: 15px;
 }
