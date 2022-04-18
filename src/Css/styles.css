@@ -187,7 +187,7 @@ main {
   max-width: 900px;
   border-radius: 30px;
   margin-bottom: 2em;
-  padding-bottom: 2em;
+  padding-bottom: 0.5em;
   margin: auto;
   position: relative;
 }
@@ -220,7 +220,6 @@ main {
 }
 .single-recipe-wrapper .see-full-recipe-button {
   position: absolute;
-  margin-right: 1em;
   right: 1em;
 }
 
