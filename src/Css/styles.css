@@ -66,6 +66,10 @@ main {
   padding-bottom: 2em;
 }
 
+.error {
+  padding: 5em 2em 2em;
+}
+
 .ingredient-form {
   background-color: rgb(255, 255, 255);
   padding: 1em;
