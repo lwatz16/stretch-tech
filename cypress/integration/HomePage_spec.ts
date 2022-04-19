@@ -57,13 +57,13 @@ describe('HomePage', () => {
       .last()
       .should('have.class', 'search-btn')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .contains('Add Ingredient')
   })
 
   it('should contain a list of ingredients that I am searching for. (On page load, there are none.)', () => {
     cy.get('.ingredients-to-search')
-      .contains('Ingredient list: none')
+      .contains('Current search:')
   })
 
   it('should update the input field to reflect the ingredient that I typed', () => {
@@ -77,28 +77,28 @@ describe('HomePage', () => {
       .type('fish')
       .should('have.value', 'fish')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
     
     cy.get('.ingredients-to-search')
-      .contains('Ingredient list: fish')
+      .contains('Current search: fish')
 
     cy.get('input')
       .type('avocado')
       .should('have.value', 'avocado')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.ingredients-to-search')
-      .contains('Ingredient list: fish, avocado')
+      .contains('Current search: fish, avocado')
   })
 
   it('should update the URL path to include my query parameters when I click on Find Recipes', () => {
     cy.get('input')
       .type('chicken')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
@@ -112,7 +112,7 @@ describe('HomePage', () => {
     cy.get('input')
       .type('chicken')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
@@ -143,19 +143,19 @@ describe('HomePage', () => {
     cy.get('input')
       .type('beef')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('input')
       .type('banana')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('input')
       .type('anchovies')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
@@ -169,7 +169,7 @@ describe('HomePage', () => {
     cy.get('input')
       .type('chicken')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
@@ -191,7 +191,7 @@ describe('HomePage', () => {
     cy.get('input')
       .type('chicken')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
@@ -214,7 +214,7 @@ describe('HomePage', () => {
     cy.get('input')
       .type('chicken')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
@@ -237,7 +237,7 @@ describe('HomePage', () => {
     cy.get('input')
       .type('chick')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')

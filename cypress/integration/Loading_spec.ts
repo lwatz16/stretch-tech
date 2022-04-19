@@ -19,7 +19,7 @@ describe('Loading', () => {
     cy.get('input')
       .type('chicken')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
@@ -50,7 +50,7 @@ describe('Loading', () => {
     cy.get('input')
       .type('chicken')
 
-    cy.get('.add-input-btn')
+    cy.get('.add-ingredient-btn')
       .click()
 
     cy.get('.search-btn')
