@@ -29,9 +29,9 @@ describe('SingleRecipeView', () => {
     cy.get('section.single-recipe-wrapper').within(recipe => {
       cy.get('img')
         .siblings('h2')
-        .siblings('p').within(details => {
-          cy.contains('2 servings')
-          cy.contains('184.91 cal')
+        .siblings('.recipe-details').within(details => {
+          cy.contains('Servings: 2')
+          cy.contains('Calories: 185')
           cy.contains('Low-Sodium')
           cy.contains('lunch/dinner')
           cy.contains('nordic')
@@ -55,8 +55,7 @@ describe('SingleRecipeView', () => {
   });
 
   it('should display Back to Home button that allows me to return to the homepage, if navigated to without searching for recipes', () => {
-    cy.get('section.single-recipe-wrapper')
-      .children('a.back-button').should('contain', 'Back to Home').click()
+    cy.get('.back-button').should('contain', 'Back to Home').click()
       .location('href').should('eq', 'http://localhost:3000/')
       .get('main')
       .children('.ingredient-form').contains('What ingredients would you like to use?')

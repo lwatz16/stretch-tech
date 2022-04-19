@@ -13,9 +13,9 @@ describe('Router Navigation', () => {
 
     cy.visit(Cypress.env('url'))
     cy.get('.inputs-wrapper input').type('blueberries')
-      .get('.add-input-btn').click()
+      .get('.add-ingredient-btn').click()
       .get('.inputs-wrapper input').type('almonds')
-      .get('.add-input-btn').click()
+      .get('.add-ingredient-btn').click()
   })
 
 
