@@ -1,46 +1,113 @@
-# Getting Started with Create React App
+# Recip-Eco
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Food is abundant in our modern society.  However, every year millions of tons of food goes to waste because individuals can't think of ways to combine every odd ingredient in their refridgerators  into something worth eating before those ingredients expire.
 
-In the project directory, you can run:
+Recip-Eco is here to fix this problem of food waste.
 
-### `npm start`
+Recip-Eco allows the user to submit a list of every odd ingredient they have yet to find a use for, and in return they receive a list of recipes from the Edamam Recipe API that includes all of the recipes listed.  Additionally, the user has the power to filter those recipes by dietary restriction.  This means that not only will the list of recipes match the ingedient list--but it will also match the preferences of each individual user!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Recip-Eco: Revolutionizing food sustainability.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Checkout the deployed beta version of the application using the link below.
 
-### `npm test`
+[Recip-Eco](https://fierce-badlands-09802.herokuapp.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Learning Goals
+- React fundamentals
+- TypeScript fundamentals
+- React Hooks
+- Build a multipage application with Router
+- APIs
+- asychronus JavaScript
+- Testing React components with acceptance testing & end-to-end testing (Cypress)
+- Responsive design
 
-### `npm run build`
+# Getting Started
+To get a local copy up and running follow these simple steps.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. In your terminal, clone the repo
+   ```sh
+   git clone git@github.com:lswatson16/stretch-tech.git
+   ```
+2. `cd` into the root directory
+    ```sh
+   cd stretch-tech
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Start the server to see the application in the browser
+   ```sh
+   npm start
+   ``` 
+   - Runs the app in the development mode.
+   - Open http://localhost:3000 to view it in the browser.
+   - The page will reload if you make edits.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Challenges and Wins
 
-### `npm run eject`
+This project was definitely a stretch!  The thing that made it so challenging was the fact that we had to do the majority of the learning required to complete it on our own time, outside of class.  However with that in mind, the project is also an incredible win for us because it shows how far we've grown as developers.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+One particular milestone that comes to mind was when we finally figured out how to refactor the project in with React Router so that the url always matches up with the state that the application webpage is currently in.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+When the user arrives at the landing page, they are greeted by a simple form asking for the ingredients they would like to use in their search.  After they've added the proper ingredients to the search list, they can press the Find Recipes button, and voila--a list of recipes including those ingredients will appear in a queue beneath the form!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If the user has any specific dietary preferences or restrictions, a dropdown will appear with the search results allowing the user to further filter their results as desired.
 
-## Learn More
+Finally, when the user has found the recipe they would like to check-out, they can click on the recipe in their queue and a new page will appear with additional recipe details and instructions along with a link to the webpage where the recipe was originally posted online.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Home page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![](https://media.giphy.com/media/EC0tqsR5wuiq0qKy5S/giphy.gif)
+
+## View Recipe Search Results
+
+![](https://media.giphy.com/media/4LQiej0kSnFoWd6IaD/giphy.gif)
+
+## View Recipe Detail
+
+![](https://media.giphy.com/media/W5LHSCHi20ZWRmXDGg/giphy.gif)
+
+# Future Additions
+
+In the future, we would like to make the following additions to Recip-Eco:
+
+- The ability for users to login to dedicated accounts so that they can individually favorite the recipes they find for future use.
+- Additional dropdown options for refining recipe results by more criteria.
+- The ability to use the application in full screen mode with a dedicated desktop and/or mobile version of the application.
+
+
+# Technologies Used 
+- TypeScript
+- React
+- React Router
+- Cypress
+- Javascript
+- SCSS/SASS
+- HTML
+- CSS
+- WAVE (Chrome extension)
+- React Dev Tools (Chrome Dev Tools)
+
+# Deployment
+Skip installation by using this deployment link to view the application: [Recip-Eco](https://fierce-badlands-09802.herokuapp.com/)
+
+- No installlation is needed  with the provided deploy link.
+- The application was deployed using [Heroku](https://www.heroku.com/).
+
+# Contributors
+- [Rory Magee](https://github.com/roryemagee1)
+- [Dillon Parker](https://github.com/Prkr93)
+- [Kim Ward](https://github.com/kmewrd)
+- [Lauralyn Watson](https://github.com/lswatson16)
+
+# Credits
+- [Heroku](https://www.heroku.com/)
+- [Create React App](https://create-react-app.dev/)
