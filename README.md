@@ -20,7 +20,7 @@ Checkout the deployed beta version of the application using the link below.
 - React Hooks
 - Build a multipage application with Router
 - APIs
-- asychronus JavaScript
+- Asychronus JavaScript
 - Testing React components with acceptance testing & end-to-end testing (Cypress)
 - Responsive design
 
