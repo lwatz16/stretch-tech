@@ -65,9 +65,15 @@ Finally, when the user has found the recipe they would like to check-out, they c
 
 ## Home page
 
+![](https://media.giphy.com/media/qeRyuo4kLa60Yt07Wr/giphy.gif)
+
 ## View Recipe Search Results
 
+![](https://media.giphy.com/media/wUJ1p2wJZdo12ktcNO/giphy.gif)
+
 ## View Recipe Detail
+
+![](https://media.giphy.com/media/aTtgiBHxOQTU2K96ux/giphy.gif)
 
 # Future Additions
 
