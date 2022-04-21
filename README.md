@@ -2,11 +2,11 @@
 
 ## Overview
 
-Food is abundant in our modern society.  However, every year millions of tons of food goes to waste because individuals can't think of ways to combine every odd ingredient in their refridgerators  into something worth eating before those ingredients expire.
+Food is abundant in our modern society.  However, every year millions of tons of food goes to waste because individuals can't think of ways to combine every odd ingredient in their refrigerators  into something worth eating before those ingredients expire.
 
 Recip-Eco is here to fix this problem of food waste.
 
-Recip-Eco allows the user to submit a list of every odd ingredient they have yet to find a use for, and in return they receive a list of recipes from the Edamam Recipe API that includes all of the recipes listed.  Additionally, the user has the power to filter those recipes by dietary restriction.  This means that not only will the list of recipes match the ingedient list--but it will also match the preferences of each individual user!
+Recip-Eco allows the user to submit a list of every odd ingredient they have yet to find a use for, and in return they receive a list of recipes from the Edamam Recipe API that includes all of the recipes listed.  Additionally, the user has the power to filter those recipes by dietary restriction.  This means that not only will the list of recipes match the ingredient list--but it will also match the preferences of each individual user!
 
 Recip-Eco: Revolutionizing food sustainability.
 
@@ -20,7 +20,7 @@ Checkout the deployed beta version of the application using the link below.
 - React Hooks
 - Build a multipage application with Router
 - APIs
-- Asychronus JavaScript
+- Asynchronous JavaScript
 - Testing React components with acceptance testing & end-to-end testing (Cypress)
 - Responsive design
 
